@@ -1,0 +1,1 @@
+/var/abs/core/udev/cdsymlinks.shsh2fix-missing-firmware.patch

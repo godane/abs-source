@@ -1,0 +1,1 @@
+/var/abs/core/udev/ignore-remove.shpatch
