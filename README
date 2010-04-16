@@ -1,0 +1,2 @@
+This is for backing up all the source code of archlinux project.
+I'm also fixing up the PKGBUILDs that have problems. (ex. baded md5, removing ${pkgname}.install, etc.)
