@@ -1,0 +1,23 @@
+# $Id: PKGBUILD 57005 2009-10-31 07:28:44Z allan $
+# Maintainer: Jan de Groot <jgc@archlinux.org>
+pkgname=libsexy
+pkgver=0.1.11
+pkgrel=2
+pkgdesc="Doing naughty things to good widgets."
+arch=('i686' 'x86_64')
+license=('GPL')
+url="http://chipx86.com/wiki/Libsexy"
+depends=('gtk2' 'libxml2')
+makedepends=('iso-codes' 'pkgconfig')
+options=('!libtool')
+source=(http://releases.chipx86.com/libsexy/libsexy/${pkgname}-${pkgver}.tar.gz)
+md5sums=('33c079a253270ec8bfb9508e4bb30754')
+
+build() {
+  cd ${srcdir}/${pkgname}-${pkgver}
+  ./configure --prefix=/usr --disable-static
+  make || return 1
+  make DESTDIR=${pkgdir} install
+
+  rm -f ${pkgdir}/usr/lib/libsexy.a
+}

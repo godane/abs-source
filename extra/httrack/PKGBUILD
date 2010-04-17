@@ -1,0 +1,23 @@
+# $Id: PKGBUILD 63630 2010-01-18 08:15:45Z andrea $
+# Maintainer:
+# Contributor: Roman Kyrylych <roman@archlinux.org>
+# Contributor: orelien <aurelien.foret@wanadoo.fr>
+
+pkgname=httrack
+pkgver=3.43.9
+pkgrel=1
+pkgdesc="An easy-to-use offline browser utility."
+arch=('i686' 'x86_64')
+url="http://www.httrack.com/"
+license=('GPL')
+depends=('bash' 'zlib')
+options=('!libtool' '!makeflags')
+source=(http://www.httrack.com/${pkgname}-${pkgver%.*}-${pkgver##*.}.tar.gz)
+md5sums=('d52539dfa39ee9bd2593ba44e2b3e149')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure --prefix=/usr || return 1
+  make || return 1
+  make DESTDIR="${pkgdir}" install || return 1
+}

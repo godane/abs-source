@@ -1,0 +1,22 @@
+# $Id: PKGBUILD 56049 2009-10-18 14:59:23Z andrea $
+# Contributor: aurelien <aurelien@archlinux.org>
+# Contributor: Damir <damir@archlinux.org>
+
+pkgname=xtermcontrol
+pkgver=2.9
+pkgrel=2
+pkgdesc="Enables dynamic control of XFree86 xterm properties"
+arch=("i686" "x86_64")
+url="http://www.thrysoee.dk/xtermcontrol/"
+license=("GPL")
+depends=('glibc')
+source=("http://www.thrysoee.dk/$pkgname/$pkgname-$pkgver.tar.gz")
+md5sums=('00fb29732d71a2035324232862e8fe26')
+
+build() {
+  cd $srcdir/$pkgname-$pkgver
+  ./configure --prefix=/usr \
+    --mandir=/usr/share/man
+  make || return 1
+  make DESTDIR=$pkgdir install
+}

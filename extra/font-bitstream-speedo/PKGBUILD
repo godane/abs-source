@@ -1,0 +1,27 @@
+# $Id: PKGBUILD 57495 2009-10-31 18:38:51Z jgc $
+# Maintainer: Eric Belanger <eric@archlinux.org>
+# Contributor: Jan de Groot <jgc@archlinux.org>
+
+pkgname=font-bitstream-speedo
+pkgver=1.0.1
+pkgrel=1
+pkgdesc="Bitstream Speedo fonts"
+arch=('any')
+url="http://xorg.freedesktop.org/"
+license=('custom')
+depends=('xorg-fonts-encodings' 'xorg-fonts-alias' 'xorg-font-utils' 'fontconfig')
+install=xfonts.install
+source=(http://xorg.freedesktop.org/releases/individual/font/${pkgname}-${pkgver}.tar.bz2)
+md5sums=('5b1856a24b1b46414950febc63880307')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure --prefix=/usr \
+      --with-mapfiles=/usr/share/fonts/util \
+      --with-fontdir=/usr/share/fonts/speedo || return 1
+  make || return 1
+  make DESTDIR="${pkgdir}" install || return 1
+  rm -f "${pkgdir}/usr/share/fonts/speedo"/fonts.*
+  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/" || return 1
+}

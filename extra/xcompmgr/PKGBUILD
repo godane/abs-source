@@ -1,0 +1,24 @@
+# $Id: PKGBUILD 59233 2009-11-21 16:09:20Z jgc $
+# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Contributor: Leslie P. Polzer <leslie.polzer@gmx.net>
+pkgname=xcompmgr
+pkgver=1.1.5
+pkgrel=1
+pkgdesc="Composite Window-effects manager for X.org"
+arch=('i686' 'x86_64')
+url="http://xorg.freedesktop.org/"
+license=('custom')
+depends=('libxcomposite' 'libxdamage' 'libxrender')
+conflicts=('xapps')
+replaces=('xapps')
+source=(http://xorg.freedesktop.org/releases/individual/app/${pkgname}-${pkgver}.tar.bz2)
+sha1sums=('9b4d7c3c64b3d980ea317b5206fee17adefd1d65')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure --prefix=/usr || return 1
+  make || return 1
+  make DESTDIR="${pkgdir}" install || return 1
+  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/" || return 1
+}

@@ -1,0 +1,6 @@
+core/*/src/
+core/*/pkg/
+extra/*/src/
+core/*/pkg/
+*.pkg.*
+*.src.*
