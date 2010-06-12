@@ -1,13 +1,13 @@
-# $Id: PKGBUILD 46376 2009-07-16 20:10:08Z francois $
+# $Id: PKGBUILD 78254 2010-04-20 04:44:58Z dgriffiths $
 # Maintainer: Allan McRae <allan@archlinux.org>
 # Contributor: Andrew Simmons <andrew.simmons@gmail.com>
 
 pkgname=perl-archive-zip
 _realname=Archive-Zip
 pkgver=1.30
-pkgrel=1
+pkgrel=2
 pkgdesc="Provide a perl interface to ZIP archive files"
-arch=('i686' 'x86_64')
+arch=(any)
 license=('GPL' 'PerlArtistic')
 url="http://search.cpan.org/dist/${_realname}/"
 depends=('perl>=5.10.0')

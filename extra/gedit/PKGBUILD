@@ -1,8 +1,8 @@
-# $Id: PKGBUILD 74079 2010-03-30 13:31:48Z ibiru $
+# $Id: PKGBUILD 77870 2010-04-18 19:59:47Z ibiru $
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gedit
-pkgver=2.30.0
+pkgver=2.30.2
 pkgrel=1
 pkgdesc="A text editor for GNOME"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ options=('!libtool' '!emptydirs')
 url="http://www.gnome.org"
 install=gedit.install
 source=(http://ftp.gnome.org/pub/gnome/sources/${pkgname}/2.30/${pkgname}-${pkgver}.tar.bz2)
-sha256sums=('37598473372aab217e46f19726cff616ff0ea4121bbdbb170b4e264a4ca76690')
+sha256sums=('bcaa3ececd38293524b12f793bc939268531ce7a2b7f49212362098cf36b1bd5')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

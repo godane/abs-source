@@ -4,16 +4,18 @@
 . /etc/rc.d/functions
 . /etc/conf.d/deluged
 
-[[ -f /var/run/deluged.pid ]] && PID=`cat /var/run/deluged.pid`
+[[ -f /var/run/deluged.pid ]] && PID=$(cat /var/run/deluged.pid)
+[[ -d /proc/$PID ]] || PID=
 
 case "$1" in
   start)
     stat_busy "Starting Deluge Daemon"
-    [[ -z $PID ]] && su -l -c "/usr/bin/deluged" $DELUGE_USER
+    [[ -z $PID ]] && su -l -s /bin/sh -c "/usr/bin/deluged >/dev/null" $DELUGE_USER
     if [ $? -gt 0 ]; then
       stat_fail
     else
-      echo $(pgrep deluged) > /var/run/deluged.pid
+      sleep 1
+      echo $(pgrep -u $DELUGE_USER deluged) > /var/run/deluged.pid
       add_daemon deluged
       stat_done
     fi

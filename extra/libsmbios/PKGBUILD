@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 41987 2009-06-08 21:01:23Z jgc $
+# $Id: PKGBUILD 78087 2010-04-19 09:25:42Z dgriffiths $
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 # Contributor: Alessio 'mOLOk' Bolognino <themolok@gmail.com>
 # Contributor: daniel g. siegel <dgsiegel@gmail.com> 
 
 pkgname=libsmbios
 pkgver=2.2.16
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for providing access to as much BIOS information as possible"
 arch=(i686 x86_64)
 url="http://linux.dell.com/libsmbios/main/index.html"

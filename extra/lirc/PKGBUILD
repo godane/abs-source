@@ -13,7 +13,7 @@ depends=('lirc-utils=0.8.6' 'kernel26>=2.6.33' 'kernel26<2.6.34')
 makedepends=('help2man' 'kernel26-headers>=2.6.33' 'kernel26-headers<2.6.34')
 replaces=('lirc+pctv')
 options=('!makeflags')
-install=lirc.install
+install=$pkgname.install
 source=("http://prdownloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
         'kernel-2.6.33.patch')
 md5sums=('4ca24da6f5e7c2dcea74878c27a4a3f7'

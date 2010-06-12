@@ -1,21 +1,20 @@
-# $Id: PKGBUILD 69012 2010-02-15 22:12:12Z dgriffiths $
+# $Id: PKGBUILD 79638 2010-05-05 01:43:58Z dgriffiths $
 # Contributor: Jochem Kossen <j.kossen@home.nl>
 # Contributor: Kevin Piche <kevin@archlinux.org>
 # Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=abcde
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A frontend command-line utility that grabs tracks off a CD, encodes them to ogg or mp3 format, and tags them, all in one go."
 arch=('any')
 url="http://code.google.com/p/abcde/"
 license=('GPL')
-depends=('bash' 'cd-discid' 'wget')
+depends=('bash' 'cd-discid' 'wget' 'vorbis-tools')
 optdepends=('eject: Eject support'
 	'cdparanoia: Paranoia ripping support'
 	'cdrkit: icedax ripping support'
 	'lame: MP3 encoding support'
-	'vorbis-tools: Ogg Vorbis encoding support'
 	'flac: FLAC encoding support'
 	'id3: ID3 v1/v2 tag support'
 	'id3v2: ID3 v2 tag support')

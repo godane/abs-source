@@ -13,7 +13,7 @@ groups=('xfce4-goodies')
 depends=('xfce4-panel' 'libunique' 'hicolor-icon-theme')
 makedepends=('pkgconfig' 'intltool')
 options=('!libtool')
-install=xfce4-clipman-plugin.install
+install=${pkgname}.install
 source=(http://archive.xfce.org/src/panel-plugins/${pkgname}/1.1/${pkgname}-${pkgver}.tar.bz2)
 md5sums=('2ba70c6bd710e2a18cba5add66d297dc')
 

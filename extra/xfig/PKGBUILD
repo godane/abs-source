@@ -1,10 +1,10 @@
-# $Id: PKGBUILD 65333 2010-01-28 02:56:48Z eric $
+# $Id: PKGBUILD 81058 2010-05-26 10:15:15Z jgc $
 # Maintainer: Eric Belanger <eric@archlinux.org>
 # Contributor: Ben <ben@benmazer.net>
 
 pkgname=xfig
 pkgver=3.2.5b
-pkgrel=3
+pkgrel=4
 pkgdesc="An interactive drawing tool"
 arch=('i686' 'x86_64')
 url="http://www.xfig.org"

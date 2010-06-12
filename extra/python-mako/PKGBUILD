@@ -1,8 +1,8 @@
-# $Id: PKGBUILD 62757 2010-01-11 19:11:46Z ibiru $
-# Maintainer : Ionut Biru <ionut@archlinux.ro>
+# $Id: PKGBUILD 82161 2010-06-08 21:57:35Z ibiru $
+# Maintainer : Ionut Biru <ibiru@archlinux.org>
 # Contributor: Roberto Alsina <ralsina@kde.org>
 pkgname=python-mako
-pkgver=0.2.5
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Hyperfast and lightweight templating for the Python platform."
 arch=('any')
@@ -11,7 +11,7 @@ license=('custom')
 depends=('python>=2.6')
 makedepends=('setuptools')
 source=(http://www.makotemplates.org/downloads/Mako-$pkgver.tar.gz)
-md5sums=('d8ca783630dc5e93970a2075532fa643')
+md5sums=('2e8fbbb7ea6dc4dde47970cdfd08901e')
 
 build() {
   cd "$srcdir/Mako-$pkgver"

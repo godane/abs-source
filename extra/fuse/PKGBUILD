@@ -1,23 +1,23 @@
-# $Id: PKGBUILD 68331 2010-02-12 12:57:08Z ronald $
+# $Id: PKGBUILD 82406 2010-06-10 21:52:09Z thomas $
 # Maintainer: Ronald van Haren <ronald.archlinux.org>
 # Contributor: Mark Rosenstand <mark@archlinux.org>
 
 pkgname=fuse
-pkgver=2.8.3
-pkgrel=1
+pkgver=2.8.4
+pkgrel=2
 pkgdesc="A library that makes it possible to implement a filesystem in a userspace program."
 arch=('i686' 'x86_64')
 url="http://fuse.sourceforge.net/"
 license="GPL2"
 depends=('glibc')
-makedepends=('pkgconfig')
-backup=(etc/fuse.conf etc/udev/rules.d/99-fuse.rules)
+makedepends=('pkg-config')
+backup=(etc/fuse.conf)
 install=fuse.install
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
 	'fuse.conf')
 options=(!libtool)
-md5sums=('517c8384f915e40647bda9f71579fd97'
-         'c9457cf5b2196da67d5ac816d1c86a4f')
+sha1sums=('b1bc296c3e5b90b3658edb5d8d7aa0ee97c145d7'
+          '3b42e37a741d4651099225987dc40e7f02a716ad')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
@@ -43,5 +43,8 @@ build() {
   ln -s libulockmgr.so.1.0.1 ${pkgdir}/lib/libulockmgr.so.1 || return 1
 
   # install sample config file
-  install -Dm644 ${srcdir}/fuse.conf ${pkgdir}/etc/fuse.conf
+  install -Dm644 ${srcdir}/fuse.conf ${pkgdir}/etc/fuse.conf || return 1
+  # Fix udev rule location
+  install -d -m755 "${pkgdir}/lib"
+  mv "${pkgdir}/etc/udev" "${pkgdir}/lib/"
 }

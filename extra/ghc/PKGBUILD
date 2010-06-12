@@ -70,4 +70,5 @@ build() {
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/ghc/license
 }
 md5sums=('3a2b23f29013605f721ebdfc29de9c92'
-         '5a3e0880c80b1dcecf779ff2e63a9c0d')
+         '5a3e0880c80b1dcecf779ff2e63a9c0d'
+         'd03bca6b591043c0fe996d72dd448919')

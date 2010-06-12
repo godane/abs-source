@@ -11,7 +11,7 @@ url="http://dopewars.sourceforge.net/"
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('gtk2>=2.12.11' 'alsa-lib' 'audiofile' 'esd' 'sdl_mixer' 'ncurses>=5.6-7')
-install=dopewars.install
+install='dopewars.install'
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('debf749de9053dc2fb2e74c37ae06206')
 

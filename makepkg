@@ -37,7 +37,7 @@ export TEXTDOMAINDIR='/usr/share/locale'
 # file -i does not work on Mac OSX unless legacy mode is set
 export COMMAND_MODE='legacy'
 
-myver='3.3.3-150-g21ab-dirty'
+myver='3.3.3-225-g8163-dirty'
 confdir='/etc'
 BUILDSCRIPT='PKGBUILD'
 startdir="$PWD"
@@ -179,6 +179,31 @@ trap 'trap_exit "$(gettext "An unknown error has occurred. Exiting...")"' ERR
 # 1) "filename::http://path/to/file"
 # 2) "http://path/to/file"
 
+# Return the absolute filename of a source entry
+#
+# This function accepts a source entry or the already extracted filename of a
+# source entry as input
+get_filepath() {
+	local file="$(get_filename "$1")"
+
+	if [[ -f "$startdir/$file" ]]; then
+		file="$startdir/$file"
+	elif [[ -f "$SRCDEST/$file" ]]; then
+		file="$SRCDEST/$file"
+	else
+		return 1
+	fi
+
+	echo "$file"
+}
+
+# Print 'source not found' error message and exit makepkg
+missing_source_file() {
+	error "$(gettext "Unable to find source file %s.")" "$(get_filename "$1")"
+	plain "$(gettext "Aborting...")"
+	exit 1 # $E_MISSING_FILE
+}
+
 # extract the filename from a source entry
 get_filename() {
 	# if a filename is specified, use it
@@ -318,12 +343,12 @@ download_file() {
 	local dlfile="${url##*/}"
 
 	# replace %o by the temporary dlfile if it exists
-	if echo "$dlcmd" | grep -q "%o" ; then
+	if [[ $dlcmd = *%o* ]]; then
 		dlcmd=${dlcmd//\%o/\"$file.part\"}
 		dlfile="$file.part"
 	fi
 	# add the URL, either in place of %u or at the end
-	if echo "$dlcmd" | grep -q "%u" ; then
+	if [[ $dlcmd = *%u* ]]; then
 		dlcmd=${dlcmd//\%u/\"$url\"}
 	else
 		dlcmd="$dlcmd \"$url\""
@@ -344,8 +369,12 @@ download_file() {
 
 run_pacman() {
 	local ret=0
-	if (( ! ASROOT )) && [[ $1 != "-T" ]] && sudo -l $PACMAN &>/dev/null; then
-		sudo $PACMAN $PACMAN_OPTS "$@" || ret=$?
+	if (( ! ASROOT )) && [[ $1 != "-T" && $1 != "-Qq" ]]; then
+		if [ "$(type -p sudo)" ] && sudo -l $PACMAN &>/dev/null; then
+			sudo $PACMAN $PACMAN_OPTS "$@" || ret=$?
+		else
+			su -c "$PACMAN $PACMAN_OPTS $*" || ret=$?
+		fi
 	else
 		$PACMAN $PACMAN_OPTS "$@" || ret=$?
 	fi
@@ -399,7 +428,6 @@ handle_deps() {
 }
 
 resolve_deps() {
-	# $pkgdeps is a GLOBAL variable, used by remove_deps()
 	local R_DEPS_SATISFIED=0
 	local R_DEPS_MISSING=1
 
@@ -409,7 +437,6 @@ resolve_deps() {
 	fi
 
 	if handle_deps $deplist; then
-		pkgdeps="$pkgdeps $deplist"
 		# check deps again to make sure they were resolved
 		deplist="$(check_deps $*)"
 		[[ -z $deplist ]] && return $R_DEPS_SATISFIED
@@ -426,23 +453,24 @@ resolve_deps() {
 	return $R_DEPS_MISSING
 }
 
-# fix flyspray bug #5923
 remove_deps() {
-	# $pkgdeps is a GLOBAL variable, set by resolve_deps()
 	(( ! RMDEPS )) && return
-	[[ -z $pkgdeps ]] && return
 
-	local dep depstrip deplist
-	deplist=""
-	for dep in $pkgdeps; do
-		depstrip="${dep%%[<=>]*}"
-		deplist="$deplist $depstrip"
-	done
+	# check for packages removed during dependency install (e.g. due to conflicts)
+	# removing all installed packages is risky in this case
+	if [[ -n  $(comm -23 <(printf "%s\n" "${original_pkglist[@]}") \
+			<(printf "%s\n" "${current_pkglist[@]}")) ]]; then
+	  warning "$(gettext "Failed to remove installed dependencies.")"
+	  return 0
+	fi
+
+	local deplist=($(comm -13  <(printf "%s\n" "${original_pkglist[@]}") \
+			<(printf "%s\n" "${current_pkglist[@]}")))
+	(( ${#deplist[@]} == 0 )) && return
 
 	msg "Removing installed dependencies..."
-
 	# exit cleanly on failure to remove deps as package has been built successfully
-	if ! run_pacman -Rns $deplist; then
+	if ! run_pacman -Rn ${deplist[@]}; then
 		warning "$(gettext "Failed to remove installed dependencies.")"
 		return 0
 	fi
@@ -455,19 +483,15 @@ download_sources() {
 
 	local netfile
 	for netfile in "${source[@]}"; do
-		local file=$(get_filename "$netfile")
-		local url=$(get_url "$netfile")
-		if [[ -f $startdir/$file ]]; then
-			msg2 "$(gettext "Found %s in build dir")" "$file"
-			rm -f "$srcdir/$file"
-			ln -s "$startdir/$file" "$srcdir/"
-			continue
-		elif [[ -f $SRCDEST/$file ]]; then
-			msg2 "$(gettext "Using cached copy of %s")" "$file"
-			rm -f "$srcdir/$file"
-			ln -s "$SRCDEST/$file" "$srcdir/"
+		local file
+		if file=$(get_filepath "$netfile"); then
+			msg2 "$(gettext "Found %s")" "${file##*/}"
+			ln -sf "$file" "$srcdir/"
 			continue
 		fi
+
+		file=$(get_filename "$netfile")
+		local url=$(get_url "$netfile")
 
 		# if we get here, check to make sure it was a URL, else fail
 		if [[ $file = $url ]]; then
@@ -494,6 +518,24 @@ download_sources() {
 	popd &>/dev/null
 }
 
+get_integlist() {
+	local integ
+	local integlist=()
+
+	for integ in md5 sha1 sha256 sha384 sha512; do
+		local integrity_sums=($(eval echo "\${${integ}sums[@]}"))
+		if [[ -n "$integrity_sums" ]]; then
+			integlist=(${integlist[@]} $integ)
+		fi
+	done
+
+	if (( ${#integlist[@]} > 0 )); then
+		echo ${integlist[@]}
+	else
+		echo ${INTEGRITY_CHECK[@]}
+	fi
+}
+
 generate_checksums() {
 	msg "$(gettext "Generating checksums for source files...")"
 	plain ""
@@ -503,8 +545,15 @@ generate_checksums() {
 		exit 1 # $E_MISSING_PROGRAM
 	fi
 
+	local integlist
+	if (( $# == 0 )); then
+		integlist=$(get_integlist)
+	else
+		integlist=$@
+	fi
+
 	local integ
-	for integ in ${INTEGRITY_CHECK[@]}; do
+	for integ in ${integlist[@]}; do
 		integ="${integ,,}"
 		case "$integ" in
 			md5|sha1|sha256|sha384|sha512) : ;;
@@ -525,18 +574,7 @@ generate_checksums() {
 
 		local netfile
 		for netfile in "${source[@]}"; do
-			local file="$(get_filename "$netfile")"
-
-			if [[ ! -f $file ]] ; then
-				if [[ ! -f $SRCDEST/$file ]] ; then
-					error "$(gettext "Unable to find source file %s to generate checksum.")" "$file"
-					plain "$(gettext "Aborting...")"
-					exit 1
-				else
-					file="$SRCDEST/$file"
-				fi
-			fi
-
+			local file="$(get_filepath "$netfile")" || missing_source_file "$netfile"
 			local sum="$(openssl dgst -${integ} "$file")"
 			sum=${sum##* }
 			(( ct )) && echo -n "$indent"
@@ -572,14 +610,10 @@ check_checksums() {
 				file="$(get_filename "$file")"
 				echo -n "    $file ... " >&2
 
-				if [[ ! -f $file ]] ; then
-					if [[ ! -f $SRCDEST/$file ]] ; then
-						echo "$(gettext "NOT FOUND")" >&2
-						errors=1
-						found=0
-					else
-						file="$SRCDEST/$file"
-					fi
+				if ! file="$(get_filepath "$file")"; then
+					echo "$(gettext "NOT FOUND")" >&2
+					errors=1
+					found=0
 				fi
 
 				if (( $found )) ; then
@@ -608,12 +642,8 @@ check_checksums() {
 	done
 
 	if (( ! correlation )); then
-		if (( SKIPINTEG )); then
-			warning "$(gettext "Integrity checks are missing.")"
-		else
-			error "$(gettext "Integrity checks are missing.")"
-			exit 1 # TODO: error code
-		fi
+		error "$(gettext "Integrity checks are missing.")"
+		exit 1 # TODO: error code
 	fi
 }
 
@@ -628,15 +658,6 @@ extract_sources() {
 			continue
 		fi
 
-		if [[ ! -f $file ]] ; then
-			if [[ ! -f $SRCDEST/$file ]] ; then
-				error "$(gettext "Unable to find source file %s for extraction.")" "$file"
-				plain "$(gettext "Aborting...")"
-				exit 1
-			else
-				file="$SRCDEST/$file"
-			fi
-		fi
 
 		# fix flyspray #6246
 		local file_type=$(file -bizL "$file")
@@ -669,10 +690,10 @@ extract_sources() {
 		local ret=0
 		msg2 "$(gettext "Extracting %s with %s")" "$file" "$cmd"
 		if [[ $cmd = bsdtar ]]; then
-			$cmd -xf "$file" || ret=?
+			$cmd -xf "$file" || ret=$?
 		else
 			rm -f "${file%.*}"
-			$cmd -dcf "$file" > "${file%.*}" || ret=?
+			$cmd -dcf "$file" > "${file%.*}" || ret=$?
 		fi
 		if (( ret )); then
 			error "$(gettext "Failed to extract %s")" "$file"
@@ -844,10 +865,8 @@ tidy_install() {
 	if [[ $(check_option strip) = y && -n ${STRIP_DIRS[*]} ]]; then
 		msg2 "$(gettext "Stripping unneeded symbols from binaries and libraries...")"
 		local binary
-		find ${STRIP_DIRS[@]} -type f -writable 2>/dev/null | while read binary ; do
-			case "$(file -biz "$binary")" in
-				*compressed-encoding*)      # Skip compressed binaries
-					;;
+		find ${STRIP_DIRS[@]} -type f -perm -u+w 2>/dev/null | while read binary ; do
+			case "$(file -bi "$binary")" in
 				*application/x-sharedlib*)  # Libraries (.so)
 					/usr/bin/strip $STRIP_SHARED "$binary";;
 				*application/x-archive*)    # Libraries (.a)
@@ -991,6 +1010,7 @@ create_package() {
 	if [[ -n $install ]]; then
 		msg2 "$(gettext "Adding install script...")"
 		cp "$startdir/$install" .INSTALL
+		chmod 644 .INSTALL
 		comp_files="$comp_files .INSTALL"
 	fi
 
@@ -998,6 +1018,7 @@ create_package() {
 	if [[ -n $changelog ]]; then
 		msg2 "$(gettext "Adding package changelog...")"
 		cp "$startdir/$changelog" .CHANGELOG
+		chmod 644 .CHANGELOG
 		comp_files="$comp_files .CHANGELOG"
 	fi
 
@@ -1053,9 +1074,15 @@ create_srcpackage() {
 	mkdir -p "$srcdir"
 	chmod a-s "$srcdir"
 	cd "$srcdir"
-	download_sources
-	# We can only check checksums if we have all files.
-	check_checksums
+	if (( ! SKIPINTEG || SOURCEONLY == 2 )); then
+		download_sources
+	fi
+	if (( ! SKIPINTEG )); then
+		# We can only check checksums if we have all files.
+		check_checksums
+	else
+		warning "$(gettext "Skipping integrity checks.")"
+	fi
 	cd "$startdir"
 
 	msg "$(gettext "Creating source package...")"
@@ -1065,37 +1092,30 @@ create_srcpackage() {
 	msg2 "$(gettext "Adding %s...")" "$BUILDSCRIPT"
 	ln -s "${BUILDFILE}" "${srclinks}/${pkgbase}/${BUILDSCRIPT}"
 
-	#if [[ -n $install ]]; then
-		msg2 "$(gettext "Adding install script...")"
-		local installfiles=$(grep "^[[:space:]]*install=" PKGBUILD | sed "s#install=##")
-		for installfile in ${installfiles}; do
-			if [[ -f ${installfile} ]]; then
-				ln -sf "${startdir}/${installfile}" "${srclinks}/${pkgbase}/${installfile}"
-			else
-				error "$(gettext "Install scriptlet (%s) does not exist.")" "${installfile}"
+	local file
+	for file in "${source[@]}"; do
+		if [[ -f $file ]]; then
+			msg2 "$(gettext "Adding %s...")" "$file"
+			ln -s "${startdir}/$file" "$srclinks/$pkgbase"
+		elif (( SOURCEONLY == 2 )); then
+			local absfile=$(get_filepath "$file") || missing_source_file "$file"
+			msg2 "$(gettext "Adding %s...")" "${absfile##*/}"
+			ln -s "$absfile" "$srclinks/$pkgbase"
+		fi
+	done
+
+	local i
+	for i in 'changelog' 'install'; do
+		local filelist=$(sed -n "s/^[[:space:]]*$i=//p" "$BUILDSCRIPT")
+		local file
+		for file in $filelist; do
+			# evaluate any bash variables used
+			eval file=${file}
+			if [[ ! -f "${srclinks}/${pkgbase}/$file" ]]; then
+				msg2 "$(gettext "Adding %s file (%s)...")" "$i" "${file}"
+				ln -s "${startdir}/$file" "${srclinks}/${pkgbase}/"
 			fi
 		done
- 	#fi
-
-	if [[ -n $changelog ]]; then
-		if [[ -f $changelog ]]; then
-			msg2 "$(gettext "Adding package changelog...")"
-			ln -s "${startdir}/$changelog" "${srclinks}/${pkgbase}/"
-		else
-			error "$(gettext "Changelog file (%s) does not exist.")" "$changelog"
-		fi
-	fi
-
-	local netfile
-	for netfile in "${source[@]}"; do
-		local file=$(get_filename "$netfile")
-		if [[ -f $netfile ]]; then
-			msg2 "$(gettext "Adding %s...")" "$netfile"
-			ln -s "${startdir}/$netfile" "${srclinks}/${pkgbase}"
-		elif (( SOURCEONLY == 2 )) && [[ -f $SRCDEST/$file ]]; then
-			msg2 "$(gettext "Adding %s...")" "$file"
-			ln -s "$SRCDEST/$file" "${srclinks}/${pkgbase}/"
-		fi
 	done
 
 	local TAR_OPT
@@ -1215,15 +1235,19 @@ check_sanity() {
 		fi
 	done
 
-	if [[ $install && ! -f $install ]]; then
-		error "$(gettext "Install scriptlet (%s) does not exist.")" "$install"
-		return 1
-	fi
-
-	if [[ -n $changelog && ! -f $changelog ]]; then
-		error "$(gettext "Changelog file (%s) does not exist.")" "$changelog"
-		return 1
-	fi
+	local i
+	for i in 'changelog' 'install'; do
+		local filelist=$(sed -n "s/^[[:space:]]*$i=//p" "$BUILDSCRIPT")
+		local file
+		for file in $filelist; do
+			# evaluate any bash variables used
+			eval file=${file}
+			if [[ ! -f $file ]]; then
+				error "$(gettext "%s file (%s) does not exist.")" "${i^}" "$file"
+				return 1
+			fi
+		done
+	done
 
 	local valid_options=1
 	local opt known kopt
@@ -1522,7 +1546,7 @@ OPT_LONG="$OPT_LONG,source,syncdeps,version,config:"
 # Pacman Options
 OPT_LONG="$OPT_LONG,noconfirm,noprogressbar"
 OPT_TEMP="$(parse_options $OPT_SHORT $OPT_LONG "$@" || echo 'PARSE_OPTIONS FAILED')"
-if echo "$OPT_TEMP" | grep -q 'PARSE_OPTIONS FAILED'; then
+if [[ $OPT_TEMP = *'PARSE_OPTIONS FAILED'* ]]; then
 	# This is a small hack to stop the script bailing with 'set -e'
 	echo; usage; exit 1 # E_INVALID_OPTION;
 fi
@@ -1698,12 +1722,9 @@ else
 fi
 
 # check for sudo if we will need it during makepkg execution
-if (( ! ASROOT && ( DEP_BIN || RMDEPS || INSTALL ) )); then
+if (( ! ( ASROOT || INFAKEROOT ) && ( DEP_BIN || RMDEPS || INSTALL ) )); then
 	if [ ! "$(type -p sudo)" ]; then
-		error "$(gettext "Cannot find the sudo binary! Is sudo installed?")"
-		plain "$(gettext "Missing dependencies cannot be installed or removed as a normal user")"
-		plain "$(gettext "without sudo; install and configure sudo to auto-resolve dependencies.")"
-		exit 1
+		warning "$(gettext "Sudo can not be found. Will use su to acquire root privileges.")"
 	fi
 fi
 
@@ -1823,9 +1844,14 @@ fi
 if (( INFAKEROOT )); then
 	if (( ! SPLITPKG )); then
 		if (( ! PKGFUNC )); then
-			if (( BUILDFUNC && ! REPKG )); then
-				run_build
-				tidy_install
+			if (( ! REPKG )); then
+				if (( BUILDFUNC )); then
+					run_build
+					tidy_install
+				fi
+			else
+				warning "$(gettext "Repackaging without the use of a package() function is deprecated.")"
+				plain "$(gettext "File permissions may not be preserved.")"
 			fi
 		else
 			run_package
@@ -1864,14 +1890,15 @@ if (( SOURCEONLY )); then
 	exit 0
 fi
 
-# fix flyspray bug #5973
-if (( NODEPS || NOBUILD || REPKG )); then
+if (( NODEPS || ( (NOBUILD || REPKG) && !DEP_BIN ) )); then
 	# no warning message needed for nobuild, repkg
-	if (( NODEPS )); then
+	if (( NODEPS || ( REPKG && PKGFUNC ) )); then
 		warning "$(gettext "Skipping dependency checks.")"
 	fi
 elif [ $(type -p "${PACMAN%% *}") ]; then
-	unset pkgdeps # Set by resolve_deps() and used by remove_deps()
+	if (( RMDEPS )); then
+		original_pkglist=($(run_pacman -Qq | sort))    # required by remove_dep
+	fi
 	deperr=0
 
 	msg "$(gettext "Checking Runtime Dependencies...")"
@@ -1879,6 +1906,10 @@ elif [ $(type -p "${PACMAN%% *}") ]; then
 
 	msg "$(gettext "Checking Buildtime Dependencies...")"
 	resolve_deps ${makedepends[@]} || deperr=1
+
+	if (( RMDEPS )); then
+		current_pkglist=($(run_pacman -Qq | sort))    # required by remove_deps
+	fi
 
 	if (( deperr )); then
 		error "$(gettext "Could not resolve all dependencies.")"
@@ -1915,7 +1946,11 @@ elif (( REPKG )); then
 	fi
 else
 	download_sources
-	check_checksums
+	if (( ! SKIPINTEG )); then
+		check_checksums
+	else
+		warning "$(gettext "Skipping integrity checks.")"
+	fi
 	extract_sources
 fi
 
@@ -1942,8 +1977,13 @@ else
 			if (( PKGFUNC )); then
 				run_package
 				tidy_install
-			elif (( ! REPKG )); then
-				tidy_install
+			else
+				if (( ! REPKG )); then
+					tidy_install
+				else
+					warning "$(gettext "Repackaging without the use of a package() function is deprecated.")"
+					plain "$(gettext "File permissions may not be preserved.")"
+				fi
 			fi
 			create_package
 		else

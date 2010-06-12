@@ -16,7 +16,7 @@ optdepends=('gstreamer0.10-base-plugins:  to support basic audio hardware' \
             'gstreamer0.10-bad-plugins:   not so well supported hardware'\
             'gstreamer0.10-ugly-plugins:  might contain questionable license hardware')
 options=('!libtool')
-install=xfce4-mixer.install
+install=${pkgname}.install
 source=(http://www.xfce.org/archive/xfce-${pkgver}/src/${pkgname}-${pkgver}.tar.bz2)
 md5sums=('a99e2455445480ef5081fe69454a46fc')
 

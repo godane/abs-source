@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 75809 2010-04-04 08:36:12Z tpowa $
+# $Id: PKGBUILD 80162 2010-05-13 10:23:57Z thomas $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 pkgbase="kernel26"
@@ -6,7 +6,7 @@ pkgname=('kernel26' 'kernel26-firmware' 'kernel26-headers') # Build stock -ARCH 
 # pkgname=kernel26-custom       # Build kernel with a different name
 _kernelname=${pkgname#kernel26}
 _basekernel=2.6.33
-pkgver=${_basekernel}.2
+pkgver=${_basekernel}.4
 pkgrel=1
 _patchname="patch-${pkgver}-${pkgrel}-ARCH"
 arch=(i686 x86_64)
@@ -19,7 +19,7 @@ source=(ftp://ftp.kernel.org/pub/linux/kernel/v2.6/linux-$_basekernel.tar.bz2
         # standard config files for mkinitcpio ramdisk
         kernel26.preset)
 md5sums=('c3883760b18d50e8d78819c54d579b00'
-         '702d845eba5c5c50ede848137552048d'
+         '6c19b9295adbbf086a1a73a5c67595f8'
          '2bc6c67ba53b61d0f37cacf519650990'
          '4ace267fc2923eae7245838083752451'
          '25584700a0a679542929c4bed31433b6')
@@ -61,7 +61,7 @@ package_kernel26() {
   pkgdesc="The Linux Kernel and modules"
   groups=('base')
   backup=(etc/mkinitcpio.d/${pkgname}.preset)
-  depends=('coreutils' 'kernel26-firmware>=2.6.32' 'module-init-tools' 'mkinitcpio>=0.5.20')
+  depends=('coreutils' 'kernel26-firmware>=2.6.33' 'module-init-tools' 'mkinitcpio>=0.5.20')
   # pwc, ieee80211 and hostap-driver26 modules are included in kernel26 now
   # nforce package support was abandoned by nvidia, kernel modules should cover everything now.
   # kernel24 support is dropped since glibc24

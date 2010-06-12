@@ -15,11 +15,11 @@ depends=('openssl')
 backup=('etc/john/john.conf')
 source=(http://www.openwall.com/$pkgname/g/$pkgname-$pkgver.tar.bz2 \
 	http://www.openwall.com/john/contrib/john-$pkgver-jumbo-2.diff.gz \
-	ftp://ftp.uni-hannover.de/pub/mirror/bsd/NetBSD/packages/distfiles/libdes-4.04b.tar.gz \
+	http://www2.psy.uq.edu.au/~ftp/Crypto/DES/libdes-4.04b.tar.gz \
 	params.h.patch)
 md5sums=('2f2310c49961c3edea6f92b8dcd45ff4'
          'c27dbe12662a767c9803964c2c76a732'
-         'c8d5c69f86c2eedb485583b0305284a1'
+         '9aa6225128af191ef8fc689667df043c'
          'f69ed632eba8fb9e45847a4b4a323787')
 
 build() {

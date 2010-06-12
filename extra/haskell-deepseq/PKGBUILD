@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 depends=(ghc=6.12.1 sh)
 options=('strip')
 source=(http://hackage.haskell.org/packages/archive/deepseq/$pkgver/deepseq-$pkgver.tar.gz)
-install=haskell-deepseq.install
+install=$pkgname.install
 
 build() {
     cd $srcdir/deepseq-$pkgver

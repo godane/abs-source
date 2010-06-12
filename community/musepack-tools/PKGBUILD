@@ -1,0 +1,32 @@
+# $Id: PKGBUILD 11190 2010-02-06 17:49:08Z dgriffiths $
+# Maintainer: Corrado Primier <bardo@aur.archlinux.org>
+# Contributor: Eric Belanger <belanger@astro.umontreal.ca>
+
+pkgname=musepack-tools
+pkgver=435
+pkgrel=2
+pkgdesc="Musepack decoder/encoder"
+arch=('i686' 'x86_64')
+url="http://www.musepack.net/"
+license=('LGPL')
+depends=('libcuefile' 'libreplaygain')
+makedepends=('cmake')
+source=(http://files.musepack.net/source/musepack_src_r${pkgver}.tar.gz math.patch)
+md5sums=('0e858972978fe480fd1400b7331061de' 'f9d51d2d7ba46fbdc4d038596871f9e0')
+
+build() {
+  export LDFLAGS="${LDFLAGS} -lm"
+  cd ${srcdir}/musepack_src_r${pkgver}
+
+  patch -Np0 -i ${srcdir}/math.patch || return 1
+
+  mkdir build
+  cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_SKIP_RPATH=ON .. || return 1
+  make DESTDIR="${pkgdir}" install || return 1
+
+  for bin in chap cut dec enc gain 2sv8; do
+	install -Dm755 ${srcdir}/musepack_src_r${pkgver}/build/mpc${bin}/mpc${bin} \
+      ${pkgdir}/usr/bin/mpc${bin}
+  done
+}

@@ -10,7 +10,7 @@ arch=(i686 x86_64)
 license=('GPL')
 url="http://tr.openmonkey.com/pages/obconf/"
 depends=('openbox>=3.4.5' 'gtk2>=2.16.1' 'libglade' 'desktop-file-utils')
-install=obconf.install
+install=${pkgname}.install
 source=(http://icculus.org/openbox/${pkgname}/${pkgname}-${pkgver}.tar.gz \
         http://icculus.org/openbox/mw/images/8/80/Obconf-72.png)
 md5sums=('b22e273721851dedad72acbc77eefb68' '340ae4732e76731d2838473541eb8d4e')

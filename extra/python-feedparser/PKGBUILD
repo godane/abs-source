@@ -1,12 +1,12 @@
-# $Id: PKGBUILD 31085 2009-03-24 09:37:08Z douglas $
+# $Id: PKGBUILD 77932 2010-04-19 04:30:00Z allan $
 # Maintainer: Allan McRae <allan@archlinux.org>
 # Contributor: Simo Leone <neotuli@gmail.com>
 
 pkgname=python-feedparser
 pkgver=4.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Parse RSS and Atom feeds in Python"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://feedparser.sf.net"
 license=('custom')
 depends=('python' 'libxml2' )

@@ -10,7 +10,7 @@ url="http://dansguardian.org"
 arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('squid' 'pcre' 'zlib')
-install=dansguardian.install
+install=${pkgname}.install
 source=(http://dansguardian.org/downloads/2/Stable/${pkgname}-${pkgver}.tar.gz
 dansguardian dg2.10.1.1-missing.stdio.patch)
 md5sums=('0987a1c9bfbdf398118386f10279611a' 'a65a2cb6309670ad8978f1544907d290'

@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 47861 2009-07-28 10:32:47Z ronald $
+# $Id: PKGBUILD 77844 2010-04-18 13:32:16Z allan $
 # Maintainer: Ronald van Haren <ronald.archlinux.org>
 
 pkgname=grub
 pkgver=0.97
-pkgrel=16
+pkgrel=17
 pkgdesc="A GNU multiboot boot loader"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -39,8 +39,8 @@ build() {
   cd $srcdir/$pkgname-$pkgver
 
   #set destination architecture here
-  DESTARCH="i686"
-  #DESTARCH="x86_64"
+  #DESTARCH="i686"
+  DESTARCH="x86_64"
   # optimizations break the build -- disable them
   # adding special devices to grub, patches are from fedora
   patch -Np1 -i ../special-devices.patch || return 1
@@ -75,9 +75,6 @@ build() {
   make DESTDIR=$pkgdir install || return 1
   install -D -m644 ../menu.lst $startdir/pkg/boot/grub/menu.lst
   install -D -m755 ../install-grub $startdir/pkg/sbin/install-grub
- 
-  rm -f $pkgdir/usr/share/info/dir || return 1
-  gzip /$pkgdir/usr/share/info/*
 
   if [ "$DESTARCH" = "x86_64" ]; then
     # fool makepkg into building a x86_64 package

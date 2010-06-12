@@ -1,23 +1,23 @@
-# $Id: PKGBUILD 77120 2010-04-10 21:20:21Z andrea $
+# $Id: PKGBUILD 81615 2010-06-02 04:09:27Z andrea $
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 # Contributor: Ben <ben@benmazer.net>
 
 pkgname=mpd
-pkgver=0.15.9
-pkgrel=2
+pkgver=0.15.10
+pkgrel=1
 pkgdesc="Music daemon that plays MP3, FLAC, and Ogg Vorbis files"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://musicpd.org"
 depends=('libao' 'ffmpeg' 'libmodplug' 'audiofile' 'libshout' 'libmad' 'curl'
-         'sqlite3' 'libsamplerate' 'libmms' 'wavpack' 'libmpcdec' 'avahi')
+         'sqlite3' 'libsamplerate' 'libmms' 'wavpack' 'libmpcdec' 'avahi' 'libid3tag')
 makedepends=('pkgconfig')
-install=mpd.install
-source=(http://downloads.sourceforge.net/musicpd/${pkgname}-${pkgver}.tar.bz2
+install=${pkgname}.install
+source=("http://downloads.sourceforge.net/musicpd/${pkgname}-${pkgver}.tar.bz2"
         'mpd')
-md5sums=('88f7bc0b17eac81d03b24929d12b8aa1'
-         'b1fd15de359db08e4b9ae4b199640f0e')
+md5sums=('fb18fa3ed5ff7e3719536a6603098df5'
+         '84583825d4a191aeb89f5709a3808118')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
@@ -32,7 +32,7 @@ build() {
 
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  make DESTDIR=${pkgdir} install
+  make DESTDIR=${pkgdir} install || return 1
 
   # set ours dirs in mpd.conf file
   sed -i 's|^music_directory.*$|#music_directory "path_to_your_music_collection"|1' doc/mpdconf.example
@@ -46,6 +46,6 @@ package() {
 
   install -Dm644 doc/mpdconf.example ${pkgdir}/etc/mpd.conf.example || return 1
 
-  install -D ${srcdir}/mpd ${pkgdir}/etc/rc.d/mpd || return 1
-  install -d ${pkgdir}/var/lib/mpd/playlists ${pkgdir}/var/log/mpd ${pkgdir}/var/run/mpd
+  install -Dm755 ${srcdir}/mpd ${pkgdir}/etc/rc.d/mpd || return 1
+  install -d ${pkgdir}/var/{lib/mpd/playlists,log/mpd} || return 1
 }

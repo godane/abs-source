@@ -14,7 +14,7 @@ depends=('wxgtk' 'libpano13' 'boost' 'enblend-enfuse' 'exiv2' 'openexr'
          'autopano-sift-c' 'lapack' 'desktop-file-utils')
 makedepends=('zip' 'cmake')
 optdepends=('perl-exiftool: write metadata on output images')
-install=hugin.install
+install=${pkgname}.install
 source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz
 	'libpng14.patch')
 md5sums=('0cd0b78e0d866023e3b6645e5010876f'

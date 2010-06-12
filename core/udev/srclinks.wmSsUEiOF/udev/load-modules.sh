@@ -1,1 +1,0 @@
-/var/abs/core/udev/load-modules.sh2fix-missing-firmware.patch

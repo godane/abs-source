@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 35596 2009-04-14 06:19:09Z eric $
+# $Id: PKGBUILD 78065 2010-04-19 08:54:18Z dgriffiths $
 #Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=libxevie
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="X11 EvIE extension library"
 arch=(i686 x86_64)
 url="http://xorg.freedesktop.org/"

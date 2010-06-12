@@ -11,7 +11,7 @@ url="http://www.gnu.org/software/ddd/"
 license=('GPL3' 'LGPL3')
 depends=('gcc-libs' 'ncurses' 'lesstif' 'libxaw>=1.0.5' 'libelf' 'libxext')
 optdepends=('gdb: to use the Gnu debugger' 'jdk: to use the Java debugger' 'pydb: to use the Python debugger' 'perl: to use the Perl debugger')
-install=ddd.install
+install=$pkgname.install
 source=(http://ftp.gnu.org/gnu/ddd/${pkgname}-${pkgver}.tar.gz)
 md5sums=('c50396db7bac3862a6d2555b3b22c34e')
 sha1sums=('b91d2dfb1145af409138bd34517a898341724e56')

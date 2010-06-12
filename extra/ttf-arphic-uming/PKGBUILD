@@ -1,11 +1,13 @@
-# $Id: PKGBUILD 28142 2009-02-28 00:39:26Z eric $
-# Maintainer : Damir Perisa <damir.perisa@bluewin.ch>
+# $Id: PKGBUILD 78081 2010-04-19 09:21:27Z allan $
+# Contributor: Damir Perisa <damir.perisa@bluewin.ch>
+# Maintainer: Firmicus <francois.archlinux.org> 
+
 
 pkgname=ttf-arphic-uming
 pkgver=0.2.20080216.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Mingti (printed) unicode TTFonts"
-arch=("i686" "x86_64")
+arch=('any')
 url="http://www.freedesktop.org/wiki/Software/CJKUnifonts"
 license=('custom: Arphic Public_License')
 depends=(fontconfig xorg-font-utils)

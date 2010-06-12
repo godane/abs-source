@@ -10,7 +10,7 @@ arch=('any')
 url="http://www.foolabs.com/xpdf/"
 license=('GPL2' 'custom')
 depends=('xpdf')
-install=xpdf-japanese.install
+install=$pkgname.install
 source=(ftp://ftp.foolabs.com/pub/xpdf/$pkgname.tar.gz LICENSE)
 md5sums=('a11ee6476d0f381983664fc614f7a95e' '80107f7a1cb3e6c7f2cbd1875a57b430')
 

@@ -1,16 +1,16 @@
-# $Id: PKGBUILD 73293 2010-03-24 19:09:27Z vesa $
+# $Id: PKGBUILD 81485 2010-05-31 06:32:41Z vesa $
 # Maintainer: Vesa Kaihlavirta <vesa@archlinux.org>
 # Contributor: Simo Leone <neotuli@gmail.com>
 
 pkgname=darcs
-pkgver=2.4
+pkgver=2.4.4
 pkgrel=1
 pkgdesc="Decentralized replacement for CVS with roots in quantum mechanics"
 arch=(i686 x86_64)
 url="http://darcs.net/"
 license=('GPL')
 depends=('curl' 'gmp' 'ncurses>=5.6-7')
-makedepends=('ghc' 'haskell-hashed-storage' 'haskell-haskeline' 'haskell-html' 'haskell-parsec' 'haskell-regex-compat')
+makedepends=('ghc' 'haskell-hashed-storage=0.4.13' 'haskell-haskeline' 'haskell-html' 'haskell-parsec' 'haskell-regex-compat')
 #install=darcs.install
 source=("http://darcs.net/releases/$pkgname-$pkgver.tar.gz")
 
@@ -30,4 +30,6 @@ build() {
     rm -r $startdir/pkg/usr/lib/ 
 }
 
-md5sums=('169a6d245a33da97b2daa0eda60b28e5')
+
+
+md5sums=('1ccd97561e4e0592b44f1989cebeca02')

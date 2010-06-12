@@ -1,33 +1,35 @@
-# $Id: PKGBUILD 67479 2010-02-07 10:49:10Z thomas $
+# $Id: PKGBUILD 77425 2010-04-12 20:48:57Z thomas $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 #Contributor: Urs Wolfer <uwolfer @ fwo.ch>
 
 pkgname=dmraid
-pkgver=1.0.0.rc16
+pkgver=1.0.0.rc16+CVS
 pkgrel=2
 pkgdesc="Device mapper RAID interface"
 url="http://people.redhat.com/~heinzm/sw/dmraid/"
 depends=('device-mapper>=2.0.54')
-conflicts=('mkinitcpio<0.5.99')
 arch=('i686' 'x86_64')
 license=('GPL')
-source=(http://people.redhat.com/~heinzm/sw/dmraid/src/$pkgname-$pkgver.tar.bz2
+source=(ftp://ftp.archlinux.org/other/dmraid/$pkgname-$pkgver.tar.bz2
+        #http://people.redhat.com/~heinzm/sw/dmraid/src/$pkgname-$pkgver.tar.bz2
         dmraid_install
         dmraid_hook)
 install=dmraid.install
-md5sums=('32832c1dfd7e72cd4355490322fca68a'
-         'b86ad3587cadd711b356d6ab49bdaf8d'
-         'b1fcca57a711be68b57c5ec8614d87cb')
+md5sums=('c0de87073de96b311d26ab0170b2a753'
+         'd01908b414e1686c0f3233ff37de78a5'
+         '0a748b6e78b156f2f9dda45fc629651f')
 
 build() {
-  cd $srcdir/$pkgname/$pkgver
-  ./configure
+  cd "$srcdir"/$pkgname/$pkgver
+
+  ./configure --enable-led --enable-intel_led
   make || return 1
-  make DESTDIR=$pkgdir exec_prefix=$pkgdir/ mandir=$pkgdir/usr/share/man includedir=$pkgdir/usr/include install || return 1
-  mkdir -p $pkgdir/var/lock/dmraid
-  chmod 1777 $pkgdir/var/lock/
-  install -D -m644 $srcdir/dmraid_install $pkgdir/lib/initcpio/install/dmraid
-  install -D -m644 $srcdir/dmraid_hook $pkgdir/lib/initcpio/hooks/dmraid
-  # fix .a file
-  chmod 644 $pkgdir/lib/libdmraid.a
+  make DESTDIR="$pkgdir" mandir=/usr/share/man includedir=/usr/include install || return 1
+  mkdir -p "$pkgdir"/var/lock/dmraid
+  chmod 1777 "$pkgdir"/var/lock/
+  install -D -m644 "$srcdir"/dmraid_install "$pkgdir"/lib/initcpio/install/dmraid
+  install -D -m644 "$srcdir"/dmraid_hook "$pkgdir"/lib/initcpio/hooks/dmraid
+  # fix permissions
+  chmod 644 "$pkgdir"/lib/libdmraid.a
+  chmod 644 "$pkgdir"/usr/include/dmraid/*
 }

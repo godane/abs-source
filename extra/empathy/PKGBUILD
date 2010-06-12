@@ -1,14 +1,14 @@
-# $Id: PKGBUILD 77001 2010-04-09 14:26:11Z ibiru $
+# $Id: PKGBUILD 82224 2010-06-09 15:05:34Z ibiru $
 # Maintainer: Ionut Biru <ibiru@archlinux.org>
 pkgname=empathy
-pkgver=2.30.0.1
+pkgver=2.30.1.1
 pkgrel=1
 pkgdesc="A GNOME instant messaging client using the Telepathy framework."
 arch=('i686' 'x86_64')
 url="http://live.gnome.org/Empathy"
 license=('GPL2')
-depends=('iso-codes' 'telepathy-mission-control>=5.3.1' 'telepathy-farsight>=0.0.12' 'libcanberra' 'libnotify' 'libunique>=1.1.6' 'libwebkit>=1.2.0' 'evolution-data-server>=2.30')
-makedepends=('pkgconfig' 'intltool' 'gnome-doc-utils>=0.19.5' 'nautilus-sendto')
+depends=('iso-codes' 'telepathy-mission-control>=5.4.1' 'telepathy-farsight>=0.0.14' 'libcanberra' 'libnotify' 'libunique>=1.1.6' 'libwebkit>=1.2.1' 'evolution-data-server>=2.30.1')
+makedepends=('pkg-config' 'intltool' 'gnome-doc-utils>=0.20.1' 'nautilus-sendto')
 optdepends=('telepathy-gabble: XMPP/Jabber support'
             'telepathy-butterfly: MSN support'
             'telepathy-idle: IRC support'
@@ -19,7 +19,7 @@ options=('!libtool')
 groups=('gnome-extra')
 install=empathy.install
 source=(http://ftp.gnome.org/pub/GNOME/sources/${pkgname}/2.30/${pkgname}-${pkgver}.tar.bz2)
-sha256sums=('8c7722058aab2f8d8b8a6d527c219582cb28957b32d9f001f520a107ffbdade1')
+sha256sums=('347c3e8ebaac0af5110a5b7b8c1869dd03dc3caa2eb57589dd1ff630f3073cb7')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

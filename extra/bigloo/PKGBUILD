@@ -14,7 +14,7 @@ url="http://www-sop.inria.fr/mimosa/fp/Bigloo/"
 depends=('openssl' 'sqlite3' 'texinfo')
 makedepends=('jdk')
 options=('!makeflags')
-install=bigloo.install
+install=${pkgname}.install
 source=(ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${pkgname}${_pkgver}.tar.gz)
 md5sums=('cc07aefa51e14f3f8dbdaca9bc77386b')
 

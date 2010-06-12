@@ -1,1 +1,0 @@
-/var/abs/core/udev/root-link.shhsh2fix-missing-firmware.patch

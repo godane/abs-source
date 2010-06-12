@@ -1,10 +1,10 @@
-# $Id: PKGBUILD 59490 2009-11-24 04:57:35Z allan $
+# $Id: PKGBUILD 77795 2010-04-18 03:56:24Z allan $
 # Maintainer: Allan McRae <allan@archlinux.org>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname=autoconf
 pkgver=2.65
-pkgrel=1
+pkgrel=2
 pkgdesc="A GNU tool for automatically configuring source code"
 arch=('any')
 license=('GPL2' 'GPL3' 'custom')
@@ -19,6 +19,10 @@ build() {
   cd ${srcdir}/${pkgname}-${pkgver}
   ./configure --prefix=/usr
   make || return 1
+}
+
+package() {
+  cd ${srcdir}/${pkgname}-${pkgver}
   make DESTDIR=${pkgdir} install || return 1
 
   # license exception

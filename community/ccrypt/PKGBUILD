@@ -1,0 +1,21 @@
+# $Id: PKGBUILD 6073 2009-11-29 04:40:35Z dgriffiths $
+# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Giovanni Scafora <giovanni@archlinux.org>
+
+pkgname=ccrypt
+pkgver=1.9
+pkgrel=1
+pkgdesc="A command-line utility for encrypting and decrypting files and streams"
+arch=('i686' 'x86_64')
+url="http://ccrypt.sourceforge.net"
+license=('GPL2')
+depends=('glibc')
+source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
+md5sums=('c3f78019d7a166dd66f1d4b1390c62c2')
+
+build() {
+  cd $srcdir/$pkgname-$pkgver
+  ./configure --prefix=/usr --mandir=/usr/share/man
+  make || return 1
+  make DESTDIR=$pkgdir install
+}

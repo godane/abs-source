@@ -1,22 +1,24 @@
-# $Id: PKGBUILD 37857 2009-05-04 01:31:52Z eric $
-# Maintainer : Damir Perisa <damir.perisa@bluewin.ch>
+# $Id: PKGBUILD 79137 2010-04-30 16:03:03Z thayer $
+# Maintainer: Firmicus <francois.archlinux.org> 
+# Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 
 pkgname=ttf-tibetan-machine
-pkgver=20020930
-pkgrel=2
+pkgver=1.901
+pkgrel=4
 pkgdesc="Tibetan Machine TTFont"
-arch=(i686 x86_64)
-url="http://www.thdl.org/tools/fonts/tibfonts.php?l=uva10928423419921"
-license=('GPL2')
-depends=(xorg-fonts-encodings xorg-fonts-alias xorg-font-utils fontconfig)
+arch=('any')
+url="http://www.thlib.org/tools/#wiki=/access/wiki/site/26a34146-33a6-48ce-001e-f16ce7908a6a/tibetan%20machine%20uni.html"
+license=('GPL3')
+depends=('xorg-fonts-encodings' 'xorg-fonts-alias' 'xorg-font-utils' 'fontconfig')
+options=('force')
 install=ttf.install
-source=("http://mirror.leaseweb.com/slackware/slackware_source/x/tibmachuni-font-ttf/TibetanMachineUnicodeFont.zip")
-md5sums=('c3be88f52fd15d940259c1d0e2a45142')
+source=("https://collab.itc.virginia.edu/access/content/group/26a34146-33a6-48ce-001e-f16ce7908a6a/Tibetan%20fonts/Tibetan%20Unicode%20Fonts/TibetanMachineUnicodeFont.zip")
+md5sums=('3913adda5d7fe4b5da561f5d35497967')
 
 build() {
   cd ${srcdir}
   install -d ${pkgdir}/usr/share/fonts/TTF
-  install -m644 *.ttf ${pkgdir}/usr/share/fonts/TTF/
+  install -m644 TibetanMachineUnicodeFont/*.ttf ${pkgdir}/usr/share/fonts/TTF/
 }
 
 

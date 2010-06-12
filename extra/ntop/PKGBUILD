@@ -12,7 +12,7 @@ url="http://www.ntop.org"
 depends=('libevent' 'libpcap' 'gd' 'glib' 'libxml2' 'openssl' 'gdbm' 'rrdtool'
 	'pcre' 'geoip' 'lua')
 options=('!libtool' '!makeflags')
-install=ntop.install
+install=${pkgname}.install
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         'ntop.confd' 'ntop.rcd')
 md5sums=('6e2ffa90d5f935c8f03d88a5dd19a866'

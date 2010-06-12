@@ -11,7 +11,7 @@ license=('GPL2')
 url="http://www.skamphausen.de/software/cdargs/"
 depends=('glibc' 'ncurses' 'gcc-libs')
 source=(http://www.skamphausen.de/downloads/$pkgname/$pkgname-$pkgver.tar.gz)
-install=cdargs.install
+install=$pkgname.install
 
 build() {
   cd $startdir/src/$pkgname-$pkgver

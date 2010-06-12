@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="http://cssed.sourceforge.net/"
 license=('GPL')
 depends=('gtk2' 'libxml2' 'desktop-file-utils')
-install=cssed.install
+install=$pkgname.install
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz $pkgname.desktop)
 md5sums=('ff7c818d1f819b7d76b4f714be64e08e' '90003378b6d74a7b85b22de67c6aa893')
 

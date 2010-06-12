@@ -10,7 +10,7 @@ arch=('any')
 url="http://www.foolabs.com/xpdf/"
 license=('GPL2')
 depends=('xpdf')
-install=xpdf-latin2.install
+install=$pkgname.install
 source=(ftp://ftp.foolabs.com/pub/xpdf/$pkgname.tar.gz)
 md5sums=('ac19ef990cd63afd2837c10dc7e1c3ab')
 

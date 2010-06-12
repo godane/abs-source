@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 73499 2010-03-26 19:19:58Z andrea $
+# $Id: PKGBUILD 81571 2010-05-31 19:20:47Z ronald $
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgbase=kdetoys
@@ -6,7 +6,7 @@ pkgname=('kdetoys-amor'
          'kdetoys-kteatime'
          'kdetoys-ktux'
          'kdetoys-kweather')
-pkgver=4.4.2
+pkgver=4.4.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://www.kde.org'
@@ -14,7 +14,7 @@ license=('GPL' 'LGPL' 'FDL')
 groups=('kde' 'kdetoys')
 makedepends=('pkgconfig' 'cmake' 'automoc4' 'kdebase-workspace')
 source=("http://download.kde.org/stable/${pkgver}/src/${pkgbase}-${pkgver}.tar.bz2")
-md5sums=('49deab7bb1d6381fc99a3279c7f7ed70')
+sha1sums=('ac0a0c83a1d4960f1acde532734c7e1eebc49ea7')
 
 build() {
 	cd $srcdir
@@ -30,7 +30,7 @@ build() {
 package_kdetoys-amor() {
 	pkgdesc='On-Screen Creature'
 	depends=('kdelibs' 'kdebase-runtime')
-	install=kdetoys.install
+	install='kdetoys.install'
 	cd $srcdir/build/amor
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/amor
@@ -40,7 +40,7 @@ package_kdetoys-amor() {
 package_kdetoys-kteatime() {
 	pkgdesc='Tea Cooker'
 	depends=('kdelibs' 'kdebase-runtime')
-	install=kdetoys.install
+	install='kdetoys.install'
 	cd $srcdir/build/kteatime
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kteatime
@@ -50,7 +50,7 @@ package_kdetoys-kteatime() {
 package_kdetoys-ktux() {
 	pkgdesc='KTux'
 	depends=('kdebase-workspace' )
-	install=kdetoys.install
+	install='kdetoys.install'
 	cd $srcdir/build/ktux
 	make DESTDIR=$pkgdir install
 }
@@ -58,7 +58,7 @@ package_kdetoys-ktux() {
 package_kdetoys-kweather() {
 	pkgdesc='A weather reporting panel applet'
 	depends=('kdelibs' 'kdebase-runtime')
-	install=kdetoys.install
+	install='kdetoys.install'
 	cd $srcdir/build/kweather
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kweather

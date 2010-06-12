@@ -13,7 +13,7 @@ depends=('xine-lib' 'curl' 'libxtst' 'libxinerama' 'libxv' 'libpng' 'libxft'
 	'lirc-utils')
 makedepends=('libxt')
 options=('!emptydirs' '!strip')
-install=xine-ui.install
+install=${pkgname}.install
 source=(http://downloads.sourceforge.net/xine/${pkgname}-${pkgver}.tar.xz
 	lirc-check-a89347673097.patch lirc-makefile-a68dd15ff7ae.patch fix_lirc.diff)
 md5sums=('d468b4e7fe39ff19888261e1da9be914'

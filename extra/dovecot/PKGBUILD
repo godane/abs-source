@@ -18,7 +18,7 @@ optdepends=('libldap: ldap plugin')
 makedepends=('libldap>=2.4.18-1')
 provides=('imap-server' 'pop3-server')
 options=('!libtool')
-install=dovecot.install
+install=$pkgname.install
 source=(http://dovecot.org/releases/1.2/${pkgname}-${pkgver}.tar.gz dovecot.sh)
 md5sums=('bdac013fd57aa616ea4bdd9ac34557c6'
          'd020d43eab4ded6fb379dadc570a9490')

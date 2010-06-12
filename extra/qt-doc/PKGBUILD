@@ -1,13 +1,13 @@
-# $Id: PKGBUILD 69040 2010-02-16 10:41:59Z andrea $
+# $Id: PKGBUILD 82153 2010-06-08 19:05:30Z andrea $
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Vinay S Shastry <vinayshastry@gmail.com>
 
 pkgname=qt-doc
-pkgver=4.6.2
+pkgver=4.6.3
 pkgrel=1
 pkgdesc='The Qt gui toolkit documentation'
 arch=('any')
-url='http://www.qtsoftware.com/'
+url='http://qt.nokia.com/'
 license=('GPL3' 'LGPL')
 options=('docs')
 depends=('qt')
@@ -15,8 +15,8 @@ replaces=('qt4-doc')
 provides=("qt4-doc=${pkgver}")
 conflicts=("qt4-doc=${pkgver}")
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
-source=("ftp://ftp.qtsoftware.com/qt/source/${_pkgfqn}.tar.gz")
-md5sums=('eb651ee4b157c01696aa56777fc6e0e5')
+source=("ftp://ftp.qt.nokia.com/qt/source/${_pkgfqn}.tar.gz")
+md5sums=('5c69f16d452b0bb3d44bc3c10556c072')
 
 build() {
   /bin/true
@@ -25,7 +25,7 @@ build() {
 package(){
   cd ${srcdir}/${_pkgfqn}
   install -d ${pkgdir}/usr/share/doc/qt
-  cp -r doc/* ${pkgdir}/usr/share/doc/qt
-  cp -r demos ${pkgdir}/usr/share/doc/qt
-  cp -r examples ${pkgdir}/usr/share/doc/qt
+  cp -r doc/* ${pkgdir}/usr/share/doc/qt || return 1
+  cp -r demos ${pkgdir}/usr/share/doc/qt || return 1
+  cp -r examples ${pkgdir}/usr/share/doc/qt || return 1
 }

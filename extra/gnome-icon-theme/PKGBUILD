@@ -1,19 +1,19 @@
-# $Id: PKGBUILD 74137 2010-03-30 16:45:11Z ibiru $
+# $Id: PKGBUILD 81100 2010-05-26 15:28:01Z ibiru $
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gnome-icon-theme
-pkgver=2.30.0
+pkgver=2.30.3
 pkgrel=1
 pkgdesc="Default icon theme for GNOME2"
 arch=(any)
-depends=('hicolor-icon-theme' 'icon-naming-utils>=0.8.6' 'gtk2')
+depends=('hicolor-icon-theme>=0.12' 'icon-naming-utils>=0.8.90' 'gtk2')
 makedepends=('intltool')
 url="http://www.gnome.org"
 license=('GPL')
 groups=('gnome')
 install=gnome-icon-theme.install
 source=(http://ftp.gnome.org/pub/gnome/sources/${pkgname}/2.30/${pkgname}-${pkgver}.tar.bz2)
-sha256sums=('d494d6c37a9711e5c4380875b69b7885778d2b7611e9a3ab278e50f8f49723f1')
+sha256sums=('417e2f9d77843a6dbdcb1f6fa70dd55992aae5621c6ad8a64e5baa3cb893dac7')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

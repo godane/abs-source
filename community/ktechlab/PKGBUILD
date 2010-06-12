@@ -1,0 +1,21 @@
+# $Id: PKGBUILD 5613 2009-11-12 13:58:49Z spupykin $
+# Maintainer: JJDaNiMoTh <jjdanimoth.aur@gmail.com>
+pkgname=ktechlab
+pkgver=0.3.7
+pkgrel=1
+pkgdesc="IDE for electronic circuits and microcontrollers"
+arch=('i686' 'x86_64')
+url="http://sourceforge.net/projects/ktechlab"
+license=("GPL")
+depends=('kdelibs3' 'gputils' 'gpsim')
+makedepends=()
+source=(http://downloads.sourceforge.net/sourceforge/ktechlab/${pkgname}-${pkgver}.tar.bz2)
+md5sums=('8e778ef8ce6d0dd4539f5532c933f6bf')
+
+build() {
+  cd ${startdir}/src/${pkgname}-$pkgver
+
+  ./configure --prefix=/opt/kde --disable-debug --without-arts
+  make || return 1
+  make DESTDIR=${startdir}/pkg install
+}

@@ -1,18 +1,18 @@
-# $Id: PKGBUILD 76962 2010-04-09 09:57:50Z ibiru $
+# $Id: PKGBUILD 79583 2010-05-04 15:21:15Z ibiru $
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgbase=gtkmm
 pkgname=('gtkmm' 'gtkmm-docs')
-pkgver=2.20.1
+pkgver=2.20.3
 pkgrel=1
 arch=('i686' 'x86_64')
-makedepends=('gtk2>=2.20.0' 'pangomm>=2.26.0' 'glibmm>=2.24.0')
+makedepends=('gtk2>=2.20.1' 'pangomm>=2.26.2' 'glibmm>=2.24.2' 'glibmm-docs>=2.24.2')
 license=('LGPL')
 options=('!libtool' '!emptydirs')
 url="http://gtkmm.sourceforge.net/"
 source=(http://ftp.gnome.org/pub/GNOME/sources/${pkgbase}/2.20/${pkgbase}-${pkgver}.tar.bz2)
-sha256sums=('95cd50b507cdd650b4b4232c5f4b2abb8ba523568dd6e62e8a2add62d8c723a1')
+sha256sums=('311d2156f15cdbdce22cb2af6e606a3f621d7dfebea6f7b1be0132e81af90585')
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
@@ -22,7 +22,7 @@ build() {
 
 package_gtkmm() {
   pkgdesc="C++ bindings for gtk2"
-  depends=('gtk2>=2.20.0' 'pangomm>=2.26.0' 'glibmm>=2.22.1')
+  depends=('gtk2>=2.20.1' 'pangomm>=2.26.2' 'glibmm>=2.24.2')
   cd "${srcdir}/${pkgbase}-${pkgver}"
   sed -i -e 's/^doc_subdirs/#doc_subdirs/' Makefile
   make DESTDIR="${pkgdir}" install || return 1

@@ -1,19 +1,19 @@
-# $Id: PKGBUILD 76022 2010-04-06 09:22:04Z andrea $
+# $Id: PKGBUILD 78865 2010-04-28 21:40:21Z andrea $
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=kdevelop
-pkgver=3.10.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="A C/C++ development environment for KDE"
 arch=('i686' 'x86_64')
 url="http://www.kdevelop.org/"
 license=('GPL')
-depends=('kdebase-workspace' 'kdevplatform>=0.10.0')
+depends=('kdebase-workspace' 'kdevplatform')
 makedepends=('cmake' 'automoc4' 'perl')
-install=kdevelop.install
-source=("http://download.kde.org/unstable/${pkgname}/${pkgver}/src/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('e1176595b4396672d666c8a76ea2fb5c')
+install=${pkgname}.install
+source=("http://download.kde.org/stable/${pkgname}/${pkgver}/src/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('9f63a0f68bc30d34c79f935386fb512d')
 
 build() {
   cd ${srcdir}

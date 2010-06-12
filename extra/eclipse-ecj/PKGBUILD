@@ -1,13 +1,13 @@
-# $Id: PKGBUILD 73333 2010-03-25 10:47:15Z allan $
+# $Id: PKGBUILD 77935 2010-04-19 04:34:38Z allan $
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 # Maintainer: Allan McRae <allan@archlinux.org>
 
 pkgname=eclipse-ecj
 pkgver=3.5.2
-pkgrel=1
+pkgrel=2
 _date=201002111343
 pkgdesc="Eclipse java bytecode compiler"
-arch=('i686' 'x86_64')
+arch=('any')
 license=('EPL')
 url="http://www.eclipse.org/"
 depends=('java-runtime')

@@ -13,7 +13,7 @@ license=('GPL')
 depends=('kdebase-workspace')
 makedepends=('pkgconfig' 'cmake' 'automoc4')
 options=('docs')
-install=kmldonkey.install
+install='kmldonkey.install'
 source=("http://download.kde.org/stable/${_kdever}/src/extragear/${pkgname}-${pkgver}-kde${_kdever}.tar.bz2")
 md5sums=('76f609c488938c8a5858c126431b88fa')
 

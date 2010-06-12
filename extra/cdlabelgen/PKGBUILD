@@ -11,8 +11,7 @@ url="http://www.aczoom.com/tools/cdinsert/"
 license=('MIT')
 depends=('perl')
 source=(http://www.aczoom.com/pub/tools/$pkgname-$pkgver.tgz LICENSE)
-md5sums=('0e56b6526ebdb749b0f3e7c7589e3019'
-         '48166ff2bf32faab4b45c6b9981446ee')
+md5sums=('327673292732c1ad71ae15e0db13d0e4' '48166ff2bf32faab4b45c6b9981446ee')
 
 build() {
   cd $srcdir/$pkgname-$pkgver

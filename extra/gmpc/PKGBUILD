@@ -1,20 +1,20 @@
-# $Id: PKGBUILD 56114 2009-10-19 19:11:15Z andrea $
+# $Id: PKGBUILD 80683 2010-05-20 18:05:37Z ibiru $
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Tobias Kieslich <tobias@archlinux.org>
 
 pkgname=gmpc
-pkgver=0.19.1
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="A GTK2 client for MPD"
 arch=('i686' 'x86_64')
 url="http://gmpc.wikia.com/wiki/Gnome_Music_Player_Client"
 license=("GPL")
-depends=('libglade' 'libmpd>0.18.1' 'curl' 'libsm' 'libsoup' 'libsexy' 'hicolor-icon-theme')
-makedepends=('gob2' 'intltool')
+depends=('libglade' 'libmpd>=0.20.0' 'curl' 'libsm' 'libsoup' 'libsexy' 'hicolor-icon-theme')
+makedepends=('gob2' 'intltool' 'vala')
 options=('!libtool')
 install=gmpc.install
 source=(http://download.sarine.nl/Programs/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-md5sums=('15d46cf81017b79f5340861077703dda')
+md5sums=('902fd69b0b6bb40abb647604080dd7ef')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}

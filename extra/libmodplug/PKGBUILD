@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 76017 2010-04-06 09:02:47Z ibiru $
+# $Id: PKGBUILD 81170 2010-05-26 23:12:54Z ibiru $
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 # Contributor: Patrick Leslie Polzer <leslie.polzer@gmx.net>
 
 pkgname=libmodplug
-pkgver=0.8.8
+pkgver=0.8.8.1
 pkgrel=1
 pkgdesc="A MOD playing library"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ license=('custom')
 depends=('gcc-libs')
 options=('!libtool')
 source=(http://downloads.sourceforge.net/sourceforge/modplug-xmms/libmodplug-${pkgver}.tar.gz)
-md5sums=('fa9e5ede2e53d847f288c0315feec275')
+md5sums=('f7fa53a60c650024ff51cca88341776b')
 
 build() {
   cd ${srcdir}/libmodplug-${pkgver}

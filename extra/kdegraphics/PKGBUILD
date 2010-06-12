@@ -11,8 +11,8 @@ pkgname=('kdegraphics-gwenview'
          'kdegraphics-ksnapshot'
          'kdegraphics-libs'
          'kdegraphics-okular')
-pkgver=4.4.2
-pkgrel=1
+pkgver=4.4.4
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://www.kde.org'
 license=('GPL' 'LGPL' 'FDL')
@@ -20,11 +20,16 @@ groups=('kde' 'kdegraphics')
 makedepends=('pkgconfig' 'cmake' 'automoc4' 'kdelibs' 'kdebase-runtime'
              'poppler-qt' 'libspectre' 'sane' 'chmlib' 'libdjvu' 'lcms' 'qca'
              'qimageblitz' 'ebook-tools' 'libxxf86vm')
-source=("http://download.kde.org/stable/${pkgver}/src/${pkgbase}-${pkgver}.tar.bz2")
-md5sums=('0f65e42a0c90261b6be885c4cdc1b75c')
+source=("http://download.kde.org/stable/${pkgver}/src/${pkgbase}-${pkgver}.tar.bz2"
+	'fix-libjpeg8-compatibility.patch'
+        'update-libkexiv2-libkipi-libdcraw.patch')
 
 build() {
-	cd $srcdir
+	# Fixed in 4.5
+	cd ${srcdir}/${pkgbase}-${pkgver}
+	patch -Np1 -i ${srcdir}/fix-libjpeg8-compatibility.patch || return 1
+        patch -Np1 -i ${srcdir}/update-libkexiv2-libkipi-libdcraw.patch || return 1
+	cd ${srcdir}
 	mkdir build
 	cd build
 	cmake ../${pkgbase}-${pkgver} \
@@ -38,7 +43,7 @@ package_kdegraphics-gwenview() {
 	pkgdesc='A simple image viewer'
 	depends=('kdebase-runtime' 'kdegraphics-libs')
 	replaces=('gwenview' 'gwenview-i18n')
-	install=kdegraphics.install
+	install='kdegraphics.install'
 	cd $srcdir/build/gwenview
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/gwenview
@@ -55,7 +60,7 @@ package_kdegraphics-kamera() {
 package_kdegraphics-kcolorchooser() {
 	pkgdesc='Color Chooser'
 	depends=('kdelibs' 'kdebase-runtime')
-	install=kdegraphics.install
+	install='kdegraphics.install'
 	cd $srcdir/build/kcolorchooser
 	make DESTDIR=$pkgdir install
 }
@@ -66,7 +71,7 @@ package_kdegraphics-kgamma() {
 	#       not detected by namcap because libgl depends on it
 	#       but nvidia providing libgl does not depend on libxxf86vm
 	depends=('kdelibs' 'kdebase-runtime' 'libxxf86vm')
-	install=kdegraphics.install
+	install='kdegraphics.install'
 	cd $srcdir/build/kgamma
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kgamma
@@ -76,7 +81,7 @@ package_kdegraphics-kgamma() {
 package_kdegraphics-kolourpaint() {
 	pkgdesc='Paint Program'
 	depends=('kdelibs' 'kdebase-runtime' 'qimageblitz' 'kdegraphics-libs')
-	install=kdegraphics.install
+	install='kdegraphics.install'
 	cd $srcdir/build/kolourpaint
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kolourpaint
@@ -86,7 +91,7 @@ package_kdegraphics-kolourpaint() {
 package_kdegraphics-kruler() {
 	pkgdesc='Screen Ruler'
 	depends=('kdelibs' 'kdebase-runtime')
-	install=kdegraphics.install
+	install='kdegraphics.install'
 	cd $srcdir/build/kruler
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kruler
@@ -96,7 +101,7 @@ package_kdegraphics-kruler() {
 package_kdegraphics-ksnapshot() {
 	pkgdesc='Screen Capture Program'
 	depends=('kdelibs' 'kdebase-runtime')
-	install=kdegraphics.install
+	install='kdegraphics.install'
 	cd $srcdir/build/ksnapshot
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/ksnapshot
@@ -111,7 +116,7 @@ package_kdegraphics-libs() {
                    'kdegraphics-svgpart' 'kdegraphics-thumbnailers')
 	replaces=('libkexiv2' 'libkdcraw' 'kdegraphics-ksaneplugin'
                   'kdegraphics-strigi-analyzer' 'kdegraphics-svgpart' 'kdegraphics-thumbnailers')
-	install=kdegraphics.install
+	install='kdegraphics.install'
 	for i in libs ksaneplugin strigi-analyzer svgpart thumbnailers; do
 		cd $srcdir/build/${i}
 		make DESTDIR=$pkgdir install
@@ -124,7 +129,7 @@ package_kdegraphics-okular() {
 	pkgdesc='Document Viewer'
 	depends=('kdelibs' 'kdebase-runtime' 'qimageblitz' 'poppler-qt'
                  'chmlib' 'libdjvu' 'libspectre' 'ebook-tools' 'kdegraphics-libs')
-	install=kdegraphics.install
+	install='kdegraphics.install'
 	cd $srcdir/build/okular
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/okular
@@ -132,3 +137,8 @@ package_kdegraphics-okular() {
 	install -D -m644 $srcdir/${pkgbase}-${pkgver}/cmake/modules/FindOkular.cmake \
 		$pkgdir/usr/share/apps/cmake/modules/FindOkular.cmake
 }
+md5sums=('4555d85bb1e302d085d14d2c4ad01323'
+         '492dc2dfe799ff81d55fcb488faf2860')
+md5sums=('4555d85bb1e302d085d14d2c4ad01323'
+         '492dc2dfe799ff81d55fcb488faf2860'
+         'd34f1ac582c1f48023d7e2ec3cf11e2b')

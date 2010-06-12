@@ -1,0 +1,21 @@
+# $Id: PKGBUILD 7832 2010-01-11 21:41:26Z cbrannon $
+# Maintainer: Chris Brannon <cmbrannon79@gmail.com>
+# Contributor: Jeff Mickey <jeff@archlinux.org>
+
+pkgname=tcpflow
+pkgver=0.21
+pkgrel=4
+pkgdesc="Captures data transmitted as part of TCP connections then stores the data conveniently"
+arch=('i686' 'x86_64')
+url="http://www.circlemud.org/~jelson/software/tcpflow/"
+license=('GPL')
+depends=('libpcap')
+source=(http://www.circlemud.org/pub/jelson/$pkgname/$pkgname-$pkgver.tar.gz)
+md5sums=('45a5aef6f043312315b7f342afc4a9c5')
+
+build() {
+  cd $startdir/src/$pkgname-$pkgver
+  ./configure --prefix=/usr --mandir=/usr/share/man
+  make || return 1
+  make DESTDIR=$startdir/pkg install || return 1
+}

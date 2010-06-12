@@ -1,17 +1,17 @@
-# $Id: PKGBUILD 58880 2009-11-16 17:43:17Z giovanni $
+# $Id: PKGBUILD 80790 2010-05-22 08:35:09Z juergen $
 # Maintainer: juergen <juergen@hoetzel.info>
 # Contributor: Manolis Tzanidakis, Petter Gundersen
 
 pkgname=scummvm
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A 'virtual machine' for several classic graphical point-and-click adventure games."
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.scummvm.org/"
-depends=('gcc-libs' 'alsa-lib' 'libmad' 'libvorbis' 'zlib' 'libmpeg2' 'flac>=1.1.4' 'sdl')
+depends=('gcc-libs' 'alsa-lib' 'libmad' 'libvorbis' 'zlib' 'flac>=1.1.4' 'sdl')
 source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('11b911937e0fc73c94a7bdc374ab617c')
+md5sums=('ed9098a78022d07fa1482f14325e3ab8')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}

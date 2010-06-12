@@ -1,10 +1,10 @@
-# $Id: PKGBUILD 72380 2010-03-15 10:32:04Z allan $
+# $Id: PKGBUILD 81388 2010-05-29 14:13:27Z allan $
 # Maintainer: Allan McRae <allan@archlinux.org>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname=tar
 pkgver=1.23
-pkgrel=1
+pkgrel=3
 pkgdesc="Utility used to store, backup, and transport files"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/tar/tar.html"
@@ -13,12 +13,16 @@ groups=('base')
 depends=('glibc' 'sh')
 options=('!emptydirs')
 install=tar.install
-source=(ftp://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.bz2 tar.1)
+source=(ftp://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.bz2
+        tar.1
+        tar-1.22-fortifysourcessigabrt.patch)
 md5sums=('41e2ca4b924ec7860e51b43ad06cdb7e'
-         'e0538778516a284e3558c454b2576c2f')
+         'e0538778516a284e3558c454b2576c2f'
+         'ab85070f3b950789900adfbaac3b28da')
 
 build() {
   cd ${srcdir}/$pkgname-$pkgver
+  patch -Np1 -i $srcdir/tar-1.22-fortifysourcessigabrt.patch
   ./configure --prefix=/usr --libexecdir=/usr/lib/tar --bindir=/bin
   make || return 1
 }
@@ -26,5 +30,5 @@ build() {
 package() {
   cd ${srcdir}/$pkgname-$pkgver
   make DESTDIR=${pkgdir} install
-  install -D -m644 ../tar.1 ${pkgdir}/usr/share/man/man1/tar.1
+  install -Dm644 ${srcdir}/tar.1 ${pkgdir}/usr/share/man/man1/tar.1
 }

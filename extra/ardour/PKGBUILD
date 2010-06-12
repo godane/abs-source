@@ -15,7 +15,7 @@ url="http://ardour.org"
 license=('GPL2')
 depends=('liblrdf' 'libgnomecanvasmm' 'liblo' 'aubio' 'libusb')
 makedepends=('scons' 'boost' 'pkgconfig' 'soundtouch')
-install=ardour.install
+install=${pkgname}.install
 source=(ftp://ftp.archlinux.org/other/ardour/${pkgname}-${pkgver}.tar.bz2
         ${pkgname}.desktop)
 md5sums=('77fbcf4d472c9567da367274bdc6b53d'

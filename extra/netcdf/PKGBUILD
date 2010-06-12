@@ -1,18 +1,18 @@
-# $Id: PKGBUILD 69048 2010-02-16 13:53:04Z ronald $
+# $Id: PKGBUILD 79767 2010-05-06 14:49:20Z ronald $
 # Maintainer: Ronald van Haren <ronald.archlinux.org>
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=netcdf
-pkgver=4.1
-pkgrel=1
+pkgver=4.1.1
+pkgrel=2
 pkgdesc="network Common Data Form interface for array-oriented data access and corresponding library"
 arch=("i686" "x86_64")
 url="http://www.unidata.ucar.edu/downloads/netcdf/index.jsp"
-depends=('gcc-libs>=4.4.3' 'hdf5')
+depends=('gcc-libs>=4.4.3' 'hdf5' 'gcc-fortran')
 options=('force' '!libtool' '!makeflags')
 license=('custom')
 source=(http://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-${pkgver}.tar.gz)
-md5sums=('8f405458c2cdc9e2e6400df32b28027f')
+sha1sums=('6fece208825b978fc2240732f6f57927d71a0552')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}

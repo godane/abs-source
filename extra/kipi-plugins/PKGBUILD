@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 77235 2010-04-11 15:11:53Z andrea $
+# $Id: PKGBUILD 82376 2010-06-10 15:40:32Z tpowa $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=kipi-plugins
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="libkipi plugins for digikam and kde apps"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -13,8 +13,7 @@ depends=('kdegraphics-libs' 'kdepimlibs' 'opencv' 'libgpod')
 source=("http://downloads.sourceforge.net/kipi/$pkgname-$pkgver.tar.bz2")
 optdepends=('imagemagick: for picture manipulation'
             'qca: for shwup webservice support')
-install=kipi-plugins.install
-md5sums=('f11471f680f8efde2fa72b76b68134be')
+install=${pkgname}.install
 
 build() {
   cd $srcdir
@@ -31,3 +30,4 @@ package() {
   cd ${srcdir}/build
   make DESTDIR=$pkgdir install || return 1
 }
+md5sums=('01095ed3d523fbc5e27dc9ba3ee47240')

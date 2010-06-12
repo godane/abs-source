@@ -10,7 +10,7 @@ arch=('any')
 url="http://www.foolabs.com/xpdf/"
 license=('GPL2')
 depends=('xpdf')
-install=xpdf-arabic.install
+install=$pkgname.install
 source=(ftp://ftp.foolabs.com/pub/xpdf/$pkgname.tar.gz)
 md5sums=('67f05f65bc64bf022b36138c7c26746d')
 

@@ -13,7 +13,7 @@ url="http://www.monotone.ca"
 license=('GPL')
 depends=('botan' 'pcre' 'lua' 'sqlite3' 'libidn' 'zlib')
 makedepends=('boost')
-install=monotone.install
+install=${pkgname}.install
 source=(http://www.monotone.ca/downloads/$pkgver/$pkgname-$pkgver.tar.gz)
 md5sums=('405286223efcf375cd022dabf2f1c845')
 

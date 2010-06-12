@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 73489 2010-03-26 19:19:05Z andrea $
+# $Id: PKGBUILD 81561 2010-05-31 19:19:56Z ronald $
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgbase=kdeedu
@@ -24,17 +24,17 @@ pkgname=('kdeedu-blinken'
          'kdeedu-parley'
          'kdeedu-rocs'
          'kdeedu-step')
-pkgver=4.4.2
+pkgver=4.4.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://www.kde.org'
 license=('GPL' 'LGPL' 'FDL')
 groups=('kde' 'kdeedu')
 makedepends=('pkgconfig' 'cmake' 'automoc4' 'ocaml' 'facile' 'eigen' 'cfitsio' 'kdelibs'
-             'kdebase-runtime' 'openbabel' 'libqalculate' 'gsl' 'boost' 'indilib' 'r'
+             'kdebase-runtime' 'openbabel' 'libqalculate' 'gsl' 'boost' 'libindi' 'r'
              'libspectre' 'python')
 source=("http://download.kde.org/stable/${pkgver}/src/${pkgbase}-${pkgver}.tar.bz2")
-md5sums=('69b9e54f4bd59c5816600c3d2828878b')
+sha1sums=('917a6e998b2eba31e241d208df7c57acf1c68550')
 
 build() {
 	cd $srcdir
@@ -51,7 +51,7 @@ build() {
 package_kdeedu-blinken() {
 	pkgdesc='A memory enhancement game'
 	depends=('kdebase-runtime' 'kdeedu-libkdeedu')
-	install=kdeedu.install
+	install='kdeedu.install'
 	cd $srcdir/build/blinken
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/blinken
@@ -64,7 +64,7 @@ package_kdeedu-cantor() {
 	optdepends=('kdeedu-kalgebra: backend'
 		'maxima: backend'
 		'r: backend')
-	install=kdeedu.install
+	install='kdeedu.install'
 	cd $srcdir/build/cantor
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/cantor
@@ -81,7 +81,7 @@ package_kdeedu-data() {
 package_kdeedu-kalgebra() {
 	pkgdesc='Math Expression Solver and Plotter'
 	depends=('kdelibs' 'kdebase-runtime')
-	install=kdeedu.install
+	install='kdeedu.install'
 	cd $srcdir/build/kalgebra
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kalgebra
@@ -91,7 +91,7 @@ package_kdeedu-kalgebra() {
 package_kdeedu-kalzium() {
 	pkgdesc='KDE Periodic Table of Elements'
 	depends=('kdebase-runtime'  'kdeedu-libkdeedu' 'openbabel')
-	install=kdeedu.install
+	install='kdeedu.install'
 	cd $srcdir/build/kalzium
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kalzium
@@ -101,7 +101,7 @@ package_kdeedu-kalzium() {
 package_kdeedu-kanagram() {
 	pkgdesc='KDE Letter Order Game'
 	depends=('kdebase-runtime' 'kdeedu-libkdeedu' 'kdeedu-data')
-	install=kdeedu.install
+	install='kdeedu.install'
 	cd $srcdir/build/kanagram
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kanagram
@@ -111,7 +111,7 @@ package_kdeedu-kanagram() {
 package_kdeedu-kbruch() {
 	pkgdesc='Practice exercises with fractions'
 	depends=('kdelibs' 'kdebase-runtime')
-	install=kdeedu.install
+	install='kdeedu.install'
 	cd $srcdir/build/kbruch
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kbruch
@@ -121,7 +121,7 @@ package_kdeedu-kbruch() {
 package_kdeedu-kgeography() {
 	pkgdesc='A Geography Learning Program'
 	depends=('kdelibs' 'kdebase-runtime')
-	install=kdeedu.install
+	install='kdeedu.install'
 	cd $srcdir/build/kgeography
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kgeography
@@ -131,7 +131,7 @@ package_kdeedu-kgeography() {
 package_kdeedu-khangman() {
 	pkgdesc='KDE Hangman Game'
 	depends=('kdebase-runtime' 'kdeedu-libkdeedu' 'kdeedu-data')
-	install=kdeedu.install
+	install='kdeedu.install'
 	cd $srcdir/build/khangman
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/khangman
@@ -141,7 +141,7 @@ package_kdeedu-khangman() {
 package_kdeedu-kig() {
 	pkgdesc='Explore Geometric Constructions'
 	depends=('kdelibs' 'kdebase-runtime' 'boost' 'python')
-	install=kdeedu.install
+	install='kdeedu.install'
 	cd $srcdir/build/kig
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kig
@@ -151,7 +151,7 @@ package_kdeedu-kig() {
 package_kdeedu-kiten() {
 	pkgdesc='Japanese Reference and Study Tool'
 	depends=('kdelibs' 'kdebase-runtime')
-	install=kdeedu.install
+	install='kdeedu.install'
 	cd $srcdir/build/kiten
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kiten
@@ -161,7 +161,7 @@ package_kdeedu-kiten() {
 package_kdeedu-klettres() {
 	pkgdesc='a KDE program to learn the alphabet'
 	depends=('kdelibs' 'kdebase-runtime')
-	install=kdeedu.install
+	install='kdeedu.install'
 	cd $srcdir/build/klettres
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/klettres
@@ -171,7 +171,7 @@ package_kdeedu-klettres() {
 package_kdeedu-kmplot() {
 	pkgdesc='Function Plotter'
 	depends=('kdelibs' 'kdebase-runtime')
-	install=kdeedu.install
+	install='kdeedu.install'
 	cd $srcdir/build/kmplot
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kmplot
@@ -181,7 +181,7 @@ package_kdeedu-kmplot() {
 package_kdeedu-kstars() {
 	pkgdesc='Desktop Planetarium'
 	depends=('kdelibs' 'kdebase-runtime' 'indilib')
-	install=kdeedu.install
+	install='kdeedu.install'
 	cd $srcdir/build/kstars
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kstars
@@ -191,7 +191,7 @@ package_kdeedu-kstars() {
 package_kdeedu-ktouch() {
 	pkgdesc='Touch Typing Tutor'
 	depends=('kdelibs' 'kdebase-runtime')
-	install=kdeedu.install
+	install='kdeedu.install'
 	cd $srcdir/build/ktouch
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/ktouch
@@ -201,7 +201,7 @@ package_kdeedu-ktouch() {
 package_kdeedu-kturtle() {
 	pkgdesc='Educational Programming Environment'
 	depends=('kdelibs' 'kdebase-runtime')
-	install=kdeedu.install
+	install='kdeedu.install'
 	cd $srcdir/build/kturtle
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kturtle
@@ -211,7 +211,7 @@ package_kdeedu-kturtle() {
 package_kdeedu-kwordquiz() {
 	pkgdesc='A flashcard and vocabulary learning program'
 	depends=('kdebase-runtime' 'kdeedu-libkdeedu' 'kdeedu-data')
-	install=kdeedu.install
+	install='kdeedu.install'
 	cd $srcdir/build/kwordquiz
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kwordquiz
@@ -231,7 +231,7 @@ package_kdeedu-libkdeedu() {
 package_kdeedu-marble() {
 	pkgdesc='Desktop Globe'
 	depends=('kdelibs' 'kdebase-runtime')
-	install=kdeedu.install
+	install='kdeedu.install'
 	cd $srcdir/build/marble
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/marble
@@ -243,7 +243,7 @@ package_kdeedu-marble() {
 package_kdeedu-parley() {
 	pkgdesc='Vocabulary Trainer'
 	depends=('kdebase-runtime' 'kdeedu-libkdeedu' 'kdeedu-data' 'kdebindings-python')
-	install=kdeedu.install
+	install='kdeedu.install'
 	cd $srcdir/build/parley
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/parley
@@ -253,7 +253,7 @@ package_kdeedu-parley() {
 package_kdeedu-rocs() {
 	pkgdesc='Graph Theory Tool for Professors and Students.'
 	depends=('kdebase-runtime' 'kdeedu-libkdeedu')
-	install=kdeedu.install
+	install='kdeedu.install'
 	cd $srcdir/build/rocs
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/rocs
@@ -263,7 +263,7 @@ package_kdeedu-rocs() {
 package_kdeedu-step() {
 	pkgdesc='Simulate physics experiments'
 	depends=('kdelibs' 'kdebase-runtime' 'gsl' 'libqalculate')
-	install=kdeedu.install
+	install='kdeedu.install'
 	cd $srcdir/build/step
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/step

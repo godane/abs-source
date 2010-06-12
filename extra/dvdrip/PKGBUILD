@@ -9,7 +9,7 @@ pkgdesc="A Gtk frontend for transcode writen in Perl"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.exit1.org/dvdrip/"
-install=dvdrip.install
+install=${pkgname}.install
 depends=('perl-gtk2-ex-formfactory' 'transcode' 'imagemagick'
          'perl-libintl-perl' 'desktop-file-utils' 'perl-event-execflow')
 optdepends=('ogmtools: for ogm/odd video creation')

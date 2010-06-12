@@ -13,7 +13,7 @@ makedepends=('pyrex')
 conflicts=('pyspi')
 provides=('pyspi')
 replaces=('pyspi')
-source=(http://dlc.sun.com/osol/jds/downloads/sources/pyspi-${pkgver}.tar.gz
+source=(http://people.redhat.com/zcerza/dogtail/releases/pyspi-${pkgver}.tar.gz
         pyspi-build.patch)
 md5sums=('def336bd566ea688a06ec03db7ccf1f4'
          '721f74cbae653a258c00b83acf7dd1da')

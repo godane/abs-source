@@ -1,14 +1,13 @@
-# $Id: PKGBUILD 61662 2009-12-21 16:23:22Z andyrtr $
+# $Id: PKGBUILD 80074 2010-05-10 21:13:12Z thomas $
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname=libgcrypt
 pkgver=1.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="a general purpose crypto library based on the code used"
 arch=(i686 x86_64)
 url="http://www.gnupg.org"
 license=('LGPL')
-groups=('base')
 depends=('libgpg-error>=1.7')
 options=(!libtool)
 source=(#ftp://ftp.gnupg.org/gcrypt/${pkgname}/${pkgname}-${pkgver}.tar.bz2
@@ -21,4 +20,9 @@ build() {
   ./configure --prefix=/usr --disable-padlock-support
   make || return 1
   make DESTDIR=${pkgdir} install || return 1
+
+  # Move dynamic libraries to /lib
+  install -d -m755 "${pkgdir}"/lib/ || return 1
+  mv "${pkgdir}"/usr/lib/libgcrypt.so* "${pkgdir}"/lib/ || return 1
+  ln -sf /lib/libgcrypt.so "${pkgdir}"/usr/lib/libgcrypt.so || return 1
 }

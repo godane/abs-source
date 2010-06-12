@@ -1,56 +1,49 @@
-# $Id: PKGBUILD 70661 2010-02-28 08:38:45Z eric $
+# $Id: PKGBUILD 81243 2010-05-27 17:32:22Z thomas $
 # Maintainer: Eric Belanger <eric@archlinux.org>
 
 pkgbase=lvm2
 pkgname=('lvm2' 'device-mapper')
-pkgver=2.02.61
-_pkgverdm=1.02.44
+pkgver=2.02.66
+_pkgverdm=1.02.45
 _pkgverlvm=${pkgver}
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://sourceware.org/lvm2/"
-license=('GPL')
+license=('GPL2' 'LGPL2.1')
 groups=('base')
 conflicts=('mkinitcpio<0.5.99')
 source=(ftp://sources.redhat.com/pub/lvm2/LVM2.${_pkgverlvm}.tgz
         lvm2_install
         lvm2_hook)
-md5sums=('0fdac768c78d96525d47b5a3df4c67de' 'f781c9f5dd4f9934952c687b73d26a18'\
+md5sums=('59766571610a4298f8bedf9f73839050'
+         'f781c9f5dd4f9934952c687b73d26a18'
          '95bed25bdbc2c2d8500e7a07aeff7f65')
-sha1sums=('a699c9497db438227c552f1821281ce583b9ea5b' '583424bb0a6f89ffe4e4ea446b912f0fedac7050'\
-         '0dc0c0d620f634c4d078afdb78e3bae15ccf957b')
+sha1sums=('f1c99d93813e124b0653bb3866fb6494257b3fea'
+          '583424bb0a6f89ffe4e4ea446b912f0fedac7050'
+          '0dc0c0d620f634c4d078afdb78e3bae15ccf957b')
                                           
 build() {
   cd "${srcdir}/LVM2.${_pkgverlvm}"
   unset LDFLAGS
-  ./configure --prefix= --sysconfdir=/etc --localstatedir=/var --enable-readline \
-    --mandir=/usr/share/man --includedir=/usr/include --with-usrlibdir=/usr/lib \
-    --enable-pkgconfig --enable-static_link --enable-dmeventd --enable-cmdlib --enable-applib \
-    --with-udevdir=/lib/udev/rules.d/ || return 1
+  ./configure --prefix= --sysconfdir=/etc --localstatedir=/var --datarootdir=/usr/share \
+    --includedir=/usr/include --with-usrlibdir=/usr/lib \
+    --enable-pkgconfig --enable-readline --enable-dmeventd --enable-cmdlib --enable-applib \
+    --with-udevdir=/lib/udev/rules.d/ --enable-udev_sync --enable-udev_rules || return 1
   make || return 1
 }
 
 package_device-mapper() {
   pkgdesc="Device mapper userspace library and tools"
   url="http://sourceware.org/dm/"
-  depends=('glibc' 'readline')
+  depends=('glibc' 'udev')
 
   cd "${srcdir}/LVM2.${_pkgverlvm}"
-  make DESTDIR="${pkgdir}" install_device-mapper || return 1
-  # install the static libraries in /usr/lib
-  install -d -m755 "${pkgdir}/usr/lib"
-  mv "${pkgdir}"/lib/libdevmapper.a* "${pkgdir}"/usr/lib/
-  ln -sf ../../lib/libdevmapper.so "${pkgdir}"/usr/lib/libdevmapper.so
-  mv "${pkgdir}"/lib/libdevmapper-event.a* "${pkgdir}"/usr/lib/
-  ln -sf ../../lib/libdevmapper-event.so "${pkgdir}"/usr/lib/libdevmapper-event.so
-  # install udev rules
-  cd udev
   make DESTDIR="${pkgdir}" install_device-mapper || return 1
 }
 
 package_lvm2() {
   pkgdesc="Logical Volume Manager 2 utilities"
-  depends=('bash' "device-mapper>=${pkgver}")
+  depends=('bash' "device-mapper>=${pkgver}" 'udev' 'readline')
   conflicts=('lvm' 'mkinitcpio<0.5.99')
   backup=('etc/lvm/lvm.conf')
   options=('!makeflags')
@@ -61,18 +54,8 @@ package_lvm2() {
   cd liblvm
   make DESTDIR="${pkgdir}" install || return 1
   cd ..
-  # install the static libraries in /usr/lib
-  install -d -m755 "${pkgdir}/usr/lib"
-  mv "${pkgdir}"/lib/liblvm2cmd.a* "${pkgdir}"/usr/lib/
-  ln -sf ../../lib/liblvm2cmd.so "${pkgdir}"/usr/lib/liblvm2cmd.so
-  mv "${pkgdir}"/lib/liblvm2app.a* "${pkgdir}"/usr/lib/
-  ln -sf ../usr/lib/liblvm2app.a "${pkgdir}"/lib/liblvm2app.a
   # /etc directories
   install -d "${pkgdir}"/etc/lvm/{archive,backup} || return 1
-  # install udev rules
-  cd udev
-  make DESTDIR="${pkgdir}" install_lvm2 || return 1
-  cd ..
   # mkinitcpio hook
   install -D -m644 "${srcdir}/lvm2_hook" "${pkgdir}/lib/initcpio/hooks/lvm2" || return 1
   install -D -m644 "${srcdir}/lvm2_install" "${pkgdir}/lib/initcpio/install/lvm2" || return 1

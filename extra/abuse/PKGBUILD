@@ -12,9 +12,9 @@ depends=('gcc-libs' 'libgl' 'sdl')
 # abuse-frabs contains community created levels.
 # abuse-lib is the original demo levels.
 # abuse-sfx is the original sound effects, included in abuse-data.
-source=(http://abuse.zoy.org/raw-attachment/wiki/Downloads/abuse-${pkgver}.tar.gz
-http://abuse.zoy.org/raw-attachment/wiki/Downloads/abuse-data-2.00.tar.gz
-http://abuse.zoy.org/raw-attachment/wiki/Downloads/abuse-frabs-2.11.tar.gz
+source=(http://abuse.zoy.org/raw/Downloads/abuse-${pkgver}.tar.gz
+http://abuse.zoy.org/raw/Downloads/abuse-data-2.00.tar.gz
+http://abuse.zoy.org/raw/Downloads/abuse-frabs-2.11.tar.gz
 abuse.patch)
 noextract=(abuse-data-2.00.tar.gz)
 license=('GPL' 'custom')

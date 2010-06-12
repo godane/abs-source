@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 77061 2010-04-10 15:55:15Z andrea $
+# $Id: PKGBUILD 81567 2010-05-31 19:20:27Z ronald $
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgbase=kdenetwork
@@ -9,8 +9,8 @@ pkgname=('kdenetwork-filesharing'
          'kdenetwork-kppp'
          'kdenetwork-krdc'
          'kdenetwork-krfb')
-pkgver=4.4.2
-pkgrel=2
+pkgver=4.4.4
+pkgrel=1
 arch=('i686' 'x86_64')
 url='http://www.kde.org'
 license=('GPL' 'LGPL' 'FDL')
@@ -19,15 +19,12 @@ makedepends=('pkgconfig' 'cmake' 'automoc4' 'boost' 'speex' 'ortp' 'libotr'
              'qca-ossl' 'kdebase-workspace' 'kdebase-lib' 'libvncserver' 'libmsn'
              'ppp' 'libv4l' 'libidn' 'rdesktop' 'qimageblitz' 'libxss' 'libxdamage'
              'libgadu' 'telepathy-qt4')
-source=("http://download.kde.org/stable/${pkgver}/src/${pkgbase}-${pkgver}.tar.bz2"
-	'fix-yahoo-protocol.patch')
-md5sums=('079fe0c9b7d7c5b52e673b5f4bc4f301'
-	'aef9c40e3b93f36b1c611f0bb5429e50')
+source=("http://download.kde.org/stable/${pkgver}/src/${pkgbase}-${pkgver}.tar.bz2")
+sha1sums=('1706b009d723897cbc9ad9b0c1743873e8e79362')
 
 build() {
-        cd ${srcdir}/${pkgbase}-${pkgver}
-	patch -Np1 -i ${srcdir}/fix-yahoo-protocol.patch || return 1
 	cd ${srcdir}
+
 	mkdir build
 	cd build
 	cmake ../${pkgbase}-${pkgver} \
@@ -43,7 +40,7 @@ build() {
 package_kdenetwork-filesharing() {
 	pkgdesc='Konqueror properties dialog plugin to share a directory with the local network'
 	depends=('kdelibs' 'smbclient')
-	install=kdenetwork.install
+	install='kdenetwork.install'
 	cd $srcdir/build/filesharing
 	make DESTDIR=$pkgdir install
 }
@@ -59,7 +56,7 @@ package_kdenetwork-kget() {
 	url="http://userbase.kde.org/KGet"
 	pkgdesc='Download Manager'
 	depends=('kdebase-workspace' 'kdebase-lib' 'qca')
-	install=kdenetwork.install
+	install='kdenetwork.install'
 	cd $srcdir/build/kget
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kget
@@ -71,7 +68,7 @@ package_kdenetwork-kopete() {
 	pkgdesc='Instant Messenger'
 	depends=('kdebase-runtime' 'kdepimlibs' 'qca-ossl' 'libotr' 'libmsn'
 	         'libidn' 'qimageblitz' 'libxss' 'libv4l' 'libgadu')
-	install=kdenetwork.install
+	install='kdenetwork.install'
 	cd $srcdir/build/kopete
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kopete
@@ -81,7 +78,7 @@ package_kdenetwork-kopete() {
 package_kdenetwork-kppp() {
 	pkgdesc='Internet Dial-Up Tool'
 	depends=('kdebase-runtime' 'kdelibs' 'ppp')
-	install=kdenetwork.install
+	install='kdenetwork.install'
 	cd $srcdir/build/kppp
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kppp

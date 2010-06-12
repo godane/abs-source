@@ -10,7 +10,7 @@ pkgrel=3
 arch=('i686' 'x86_64')
 license=('custom:isc-dhcp')
 url="https://www.isc.org/software/dhcp"
-source=(http://ftp.isc.org/isc/dhcp/dhcp-4.1-history//${pkgname}-${_pkgver}.tar.gz
+source=(http://ftp.isc.org/isc/${pkgname}/${pkgname}-${_pkgver}.tar.gz
 dhcpd dhcp.conf.d dhcp-4.1.0-missing-ipv6-not-fatal.patch dhclient-script-pathFixes.patch)
 md5sums=('325ff8338c5a21f89d5304ac13ffebdf'
          'df22cffa7d7415ece7bb025b7bf774dd'

@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 depends=(ghc=6.12.1 sh)
 options=('strip')
 source=(http://hackage.haskell.org/packages/archive/packedstring/$pkgver/packedstring-$pkgver.tar.gz)
-install=haskell-packedstring.install
+install=$pkgname.install
 
 build() {
     cd $srcdir/packedstring-$pkgver

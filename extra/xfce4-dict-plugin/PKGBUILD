@@ -13,7 +13,7 @@ groups=('xfce4-goodies')
 depends=('xfce4-panel>=4.6.1' 'hicolor-icon-theme' 'librsvg')
 makedepends=('pkgconfig')
 options=('!libtool')
-install=xfce4-dict-plugin.install
+install=${pkgname}.install
 source=(http://archive.xfce.org/src/apps/xfce4-dict/0.6/xfce4-dict-${pkgver}.tar.bz2)
 md5sums=('c371c5c0bbe45a2bfac336cfe01dfe01')
 

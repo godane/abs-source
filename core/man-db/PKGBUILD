@@ -17,7 +17,7 @@ backup=('etc/man_db.conf'
 conflicts=('man')
 provides=('man')
 replaces=('man')
-install=man-db.install
+install=${pkgname}.install
 source=(http://savannah.nongnu.org/download/man-db/$pkgname-$pkgver.tar.gz
 	#http://launchpad.net/man-db/main/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz
         convert-mans man-db.cron.daily)

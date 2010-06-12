@@ -10,7 +10,7 @@ license=("GPL")
 depends=('pygtk>=2.14.1' 'desktop-file-utils')
 arch=('i686' 'x86_64')
 source=(http://download.berlios.de/mirageiv/mirage-$pkgver.tar.gz)
-install=mirage.install
+install=$pkgname.install
 md5sums=('3b51ef6aa1a423e2c22079668add0f2b')
 
 build() {

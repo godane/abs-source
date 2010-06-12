@@ -13,7 +13,7 @@ depends=('libxslt' 'pcre' 'libart-lgpl' 'alsa-lib' 'libcups' 'jasper'
          'bzip2' 'libidn' 'openexr' 'aspell' 'qt3' 'ca-certificates')
 makedepends=('pkgconfig' 'cups' 'hspell' 'autoconf')
 options=('libtool')
-install=kdelibs3.install
+install='kdelibs3.install'
 source=("ftp://ftp.kde.org/pub/kde/stable/${pkgver}/src/kdelibs-${pkgver}.tar.bz2"
         'ftp://ftp.archlinux.org/other/kde/kde-3.5-1074156.patch.gz'
         'acinclude.patch'

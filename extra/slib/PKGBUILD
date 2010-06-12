@@ -13,7 +13,7 @@ license=("custom")
 #Only guile support for now. In the future we need to determine how to generate
 #the catalog files via makedepends - see slib.install
 depends=('guile')
-source=(ftp://ftp.uni-frankfurt.de/pub/Mirrors2/gentoo.org/distfiles/$pkgname-$pkgver.zip)
+source=(http://swiss.csail.mit.edu/ftpdir/scm/$pkgname-$pkgver.zip)
 install=slib.install
 md5sums=('9622df4aba2fde24eeb4456d97c5add1')
 

@@ -13,7 +13,7 @@ url="http://www.linux1394.org/"
 license=('LGPL')
 depends=('libraw1394>=2.0.2')
 options=('!libtool')
-source=(http://www.kernel.org/pub/linux/libs/ieee1394/${pkgname}-${pkgver}.tar.gz)
+source=(http://www.linux1394.org/dl/${pkgname}-${pkgver}.tar.gz)
 md5sums=('8af39fff74988073c3ad53fbab147da9')
 
 build() {

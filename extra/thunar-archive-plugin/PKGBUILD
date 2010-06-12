@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 356 2008-04-18 22:56:27Z aaron $
+# $Id: PKGBUILD 77962 2010-04-19 07:36:04Z dgriffiths $
 # Contributor: Tobias Kieslich <tobias (at) archlinux.org>
 
 pkgname=thunar-archive-plugin
 pkgver=0.2.4
-pkgrel=5
+pkgrel=6
 pkgdesc="create and deflate archives in thunar"
 arch=(i686 x86_64)
 license=('GPL2')
@@ -12,14 +12,14 @@ groups=('xfce4-goodies')
 depends=('thunar')
 makedepends=('intltool' 'pkgconfig')
 options=('!libtool')
-install=thunar-archive-plugin.install
+install=${pkgname}.install
 source=(http://download.berlios.de/xfce-goodies/${pkgname}-${pkgver}.tar.bz2)
 md5sums=('4c389e6328af9322937af76382f0baec')
 
 build() {
-  cd ${startdir}/src/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgname}-${pkgver}
   ./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib/xfce4 \
     --localstatedir=/var --disable-static
   make || return 1
-  make DESTDIR=${startdir}/pkg install
+  make DESTDIR=${pkgdir} install
 }

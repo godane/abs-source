@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 67000 2010-02-02 06:10:15Z tpowa $
+# $Id: PKGBUILD 82261 2010-06-09 19:07:36Z tpowa $
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=kaffeine
-pkgver=1.0pre3
-_pkgver=1.0-pre3
+pkgver=1.0
+_pkgver=1.0
 pkgrel=1
 pkgdesc='KDE media player'
 license=('GPL')
@@ -24,4 +24,4 @@ build() {
 	make
 	make DESTDIR=$pkgdir install
 }
-md5sums=('919e29a95b599db5eef74b5983f135f4')
+md5sums=('81bac76f931245a75f20ed26a37c55e3')

@@ -10,7 +10,7 @@ arch=('any')
 url="http://www.foolabs.com/xpdf/"
 license=('GPL2' 'custom')
 depends=('xpdf')
-install=xpdf-chinese-traditional.install
+install=$pkgname.install
 source=(ftp://ftp.foolabs.com/pub/xpdf/$pkgname.tar.gz LICENSE)
 md5sums=('b7fa7f1850f7cfa28498701507079abb' 'c712b6980d92a9726e5f6638389189e0')
 

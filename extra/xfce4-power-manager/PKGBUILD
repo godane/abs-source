@@ -12,7 +12,7 @@ groups=('xfce4-goodies')
 depends=('xfce4-panel>=4.6.1' 'libnotify' 'hal' 'hicolor-icon-theme' 'librsvg')
 makedepends=('pkgconfig' 'intltool')
 options=('!libtool')
-install=xfce4-power-manager.install
+install=${pkgname}.install
 source=(http://archive.xfce.org/src/apps//${pkgname}/0.8/${pkgname}-${pkgver}.tar.bz2)
 md5sums=('ca6a1fff1d4fee86844c2f5621e9fb87')
 

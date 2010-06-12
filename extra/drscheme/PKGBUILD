@@ -11,7 +11,7 @@ url="http://www.drscheme.org/"
 license=('LGPL')
 depends=('gcc-libs' 'cairo' 'desktop-file-utils' 'libjpeg' 'mesa' 'openssl' 'libxaw' 'libxmu' 'libxft')
 options=('!makeflags')
-install=drscheme.install
+install=${pkgname}.install
 source=(http://download.plt-scheme.org/bundles/${pkgver}/plt/plt-${pkgver}-src-unix.tgz
 	drscheme.desktop libpng-1.4.patch)
 md5sums=('70ec6e8ffdcb83bb34766685c13fa510'

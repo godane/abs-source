@@ -18,7 +18,7 @@ license=('GPL')
 url="http://www.mono-project.com/"
 depends=('mono>=2.6.3' 'desktop-file-utils' 'gnome-desktop-sharp>=2.26.0' 'gluezilla')
 makedepends=('gecko-sharp-2.0>=0.13')
-install=mono-tools.install
+install=$pkgname.install
 source=(http://ftp.novell.com/pub/mono/sources/$pkgname/$pkgname-$pkgver.tar.bz2)
 
 build() {

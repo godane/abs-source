@@ -1,14 +1,14 @@
-# $Id: PKGBUILD 74027 2010-03-29 21:11:20Z ibiru $
+# $Id: PKGBUILD 78693 2010-04-27 20:04:32Z jgc $
 # Maintainer: Roman Kyrylych <roman@archlinux.org>
 
 pkgname=gnome-bluetooth
 pkgver=2.30.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNOME Bluetooth Subsystem."
 arch=('i686' 'x86_64')
 url="http://live.gnome.org/GnomeBluetooth"
 license=('GPL' 'LGPL')
-depends=('bluez>=4.63' 'libunique>=1.1.6' 'libnotify>=0.4.5' 'gconf>=2.28.0' 'hicolor-icon-theme' 'gvfs>=1.6.0' 'obexd>=0.22')
+depends=('bluez>=4.63' 'libunique>=1.1.6' 'libnotify>=0.4.5' 'gconf>=2.28.1' 'hicolor-icon-theme' 'gvfs-obexftp>=1.6.1' 'obexd>=0.22')
 makedepends=('intltool' 'pygtk>=2.16.0' 'gnome-doc-utils>=0.20.0' 'nautilus-sendto' 'gobject-introspection' 'gir-repository')
 replaces=('bluez-gnome')
 conflicts=('bluez-gnome')

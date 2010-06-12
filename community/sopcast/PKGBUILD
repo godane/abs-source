@@ -1,0 +1,24 @@
+# $Id: PKGBUILD 5701 2009-11-14 21:19:10Z mherych $
+# Maintainer: Giovanni Scafora <giovanni@archlinux.org>
+# Contributor: Alessio 'mOLOk' Bolognino <themolok@gmail.com>
+
+pkgname=sopcast
+pkgver=3.2.6
+pkgrel=1
+pkgdesc="The Streaming Direct Broadcast System based on P2P"
+arch=('i686') # Binary app, doesn't work on x86_64
+url="http://www.sopcast.org"
+license=('custom')
+depends=('libstdc++5')
+source=(http://download.sopcast.com/download/sp-auth.tgz license)
+md5sums=('db931c9237fc93756dab7284800fa43f'
+         'cd4c2f7795918cdb02550a6e0ee939a4')
+install=sopcast.install
+
+build()  {
+  install -D -m755 sp-auth/sp-sc-auth $pkgdir/usr/bin/sp-sc-auth
+  ln -s sp-sc-auth $pkgdir/usr/bin/sopcast
+  ln -s sp-sc-auth $pkgdir/usr/bin/sp-sc
+  install -D license $pkgdir/usr/share/licenses/sopcast/COPYING
+}
+

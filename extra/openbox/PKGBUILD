@@ -1,10 +1,10 @@
-# $Id: PKGBUILD 73502 2010-03-26 19:55:13Z dgriffiths $
+# $Id: PKGBUILD 80390 2010-05-17 01:49:32Z dgriffiths $
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: tobias <tobias@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
 
 pkgname=openbox
-pkgver=3.4.11.1
+pkgver=3.4.11.2
 pkgrel=1
 pkgdesc="A window manager for the X11 windowing system"
 arch=('i686' 'x86_64')
@@ -14,12 +14,12 @@ depends=('startup-notification' 'libxml2' 'libxinerama' 'libxrandr'
 	'libxcursor' 'pango')
 optdepends=('pyxdg: for the xdg-autostart script')
 groups=('lxde')
-install=openbox.install
+install=${pkgname}.install
 options=('!libtool' 'force')
 backup=('etc/xdg/openbox/menu.xml' 'etc/xdg/openbox/rc.xml')
 source=(http://www.icculus.org/openbox/releases/${pkgname}-${pkgver}.tar.gz
 	'which-2.20.patch')
-md5sums=('56d1b365a95b119e4809802aeea734fb'
+md5sums=('30e669134fa81df810fe7d1dc59cd931'
          'ec5e3d4d74779b0ca576a053ae54124d')
 
 build() {

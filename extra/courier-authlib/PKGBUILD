@@ -16,7 +16,7 @@ makedepends=('pam' 'expect' 'libldap' 'libmysqlclient' 'postgresql-libs>=8.3.0')
 optdepends=('libmysqlclient' 'libldap' 'postgresql-libs')
 conflicts=('courier-imap-mysql' 'courier-imap-pgsql' 'courier-imap-ldap')
 provides=('courier-imap-mysql' 'courier-imap-pgsql' 'courier-imap-ldap')
-install=courier-authlib.install
+install=${pkgname}.install
 source=(http://downloads.sourceforge.net/project/courier/authlib/${pkgver}/${pkgname}-${pkgver}.tar.bz2
         authdaemond.rc.d)
 md5sums=('40b01d7f19c29db7c919c0938a7537c7'

@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 73492 2010-03-26 19:19:21Z andrea $
+# $Id: PKGBUILD 81564 2010-05-31 19:20:12Z ronald $
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgbase=kdeartwork
@@ -11,7 +11,7 @@ pkgname=('kdeartwork-colorschemes'
          'kdeartwork-sounds'
          'kdeartwork-styles'
          'kdeartwork-wallpapers')
-pkgver=4.4.2
+pkgver=4.4.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://www.kde.org'
@@ -19,7 +19,7 @@ license=('GPL' 'LGPL' 'FDL')
 groups=('kde' 'kdeartwork')
 makedepends=('pkgconfig' 'cmake' 'automoc4' 'xscreensaver' 'eigen' 'kdebase-workspace')
 source=("http://download.kde.org/stable/${pkgver}/src/${pkgbase}-${pkgver}.tar.bz2")
-md5sums=('afcedcbf7ed2d7d9f2e22d7677189d28')
+sha1sums=('7a0dd910a97a1bc9e5a98f4d83104f287f4534d5')
 
 build() {
 	cd $srcdir

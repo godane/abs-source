@@ -1,10 +1,10 @@
-# $Id: PKGBUILD 77240 2010-04-11 16:32:30Z ibiru $
+# $Id: PKGBUILD 82070 2010-06-08 15:54:23Z ibiru $
 # Maintainer : Ionut Biru <ibiru@archlinux.org>
 # Contributor: damir <damir@archlinux.org>
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=x264
-pkgver=20100410
+pkgver=20100607
 pkgrel=1
 pkgdesc="free library for encoding H264/AVC video streams"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('glibc')
 makedepends=('yasm')
 source=(ftp://ftp.videolan.org/pub/videolan/x264/snapshots/x264-snapshot-$pkgver-2245.tar.bz2)
-sha256sums=('7f42481ad03ffdf04e182fcc336f86e3eec6cdaffb5385ca4e713541b8705185')
+md5sums=('d796cbb3eb4ce5126b861aed64d0058e')
 
 build() {
     cd "$srcdir/$pkgname-snapshot-$pkgver-2245" || return 1

@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 73498 2010-03-26 19:19:53Z andrea $
+# $Id: PKGBUILD 81570 2010-05-31 19:20:40Z ronald $
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgbase=kdesdk
@@ -21,7 +21,7 @@ pkgname=('kdesdk-cervisia'
          'kdesdk-scripts'
          'kdesdk-strigi-analyzer'
          'kdesdk-umbrello')
-pkgver=4.4.2
+pkgver=4.4.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://www.kde.org'
@@ -30,7 +30,7 @@ groups=('kde' 'kdesdk')
 makedepends=('pkgconfig' 'cmake' 'automoc4' 'boost' 'kdebase-runtime' 'kdepimlibs' 'subversion'
              'kdepim-runtime' 'kdebindings-python')
 source=("http://download.kde.org/stable/${pkgver}/src/${pkgbase}-${pkgver}.tar.bz2")
-md5sums=('ae3e9cb72311b76c7561440e1f3857fe')
+sha1sums=('f62a54f7d1e6b260f548c9031c5ddcafac0c9eaf')
 
 build() {
 	cd $srcdir
@@ -46,7 +46,7 @@ build() {
 package_kdesdk-cervisia() {
 	pkgdesc='CVS Frontend'
 	depends=('kdebase-runtime' 'kdelibs')
-	install=kdesdk.install
+	install='kdesdk.install'
 	cd $srcdir/build/cervisia
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/cervisia
@@ -56,7 +56,7 @@ package_kdesdk-cervisia() {
 package_kdesdk-kapptemplate() {
 	pkgdesc='KDE Template Generator'
 	depends=('kdebase-runtime' 'kdelibs')
-	install=kdesdk.install
+	install='kdesdk.install'
 	cd $srcdir/build/kapptemplate
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kapptemplate
@@ -66,7 +66,7 @@ package_kdesdk-kapptemplate() {
 package_kdesdk-kate() {
 	pkgdesc='Advanced Text Editor'
 	depends=('kdebase-runtime' 'kdelibs')
-	install=kdesdk.install
+	install='kdesdk.install'
 	cd $srcdir/build/kate
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kate
@@ -76,7 +76,7 @@ package_kdesdk-kate() {
 package_kdesdk-kbugbuster() {
 	pkgdesc='KDE Bug Management'
 	depends=('kdebase-runtime' 'kdepimlibs' 'kdepim-runtime')
-	install=kdesdk.install
+	install='kdesdk.install'
 	cd $srcdir/build/kbugbuster
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kbugbuster
@@ -86,7 +86,7 @@ package_kdesdk-kbugbuster() {
 package_kdesdk-kcachegrind() {
 	pkgdesc='Visualization of Performance Profiling Data'
 	depends=('kdebase-runtime' 'kdelibs' 'python')
-	install=kdesdk.install
+	install='kdesdk.install'
 	cd $srcdir/build/kcachegrind
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kcachegrind
@@ -125,7 +125,7 @@ package_kdesdk-kmtrace() {
 package_kdesdk-kompare() {
 	pkgdesc='Diff/Patch Frontend'
 	depends=('kdebase-runtime' 'kdelibs')
-	install=kdesdk.install
+	install='kdesdk.install'
 	cd $srcdir/build/kompare
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kompare
@@ -135,7 +135,7 @@ package_kdesdk-kompare() {
 package_kdesdk-kpartloader() {
 	pkgdesc='A test application for KParts'
 	depends=('kdebase-runtime' 'kdelibs')
-	install=kdesdk.install
+	install='kdesdk.install'
 	cd $srcdir/build/kpartloader
 	make DESTDIR=$pkgdir install
 }
@@ -156,7 +156,7 @@ package_kdesdk-kstartperf() {
 package_kdesdk-kuiviewer() {
 	pkgdesc='Qt Designer UI File Viewer'
 	depends=('kdebase-runtime' 'kdelibs')
-	install=kdesdk.install
+	install='kdesdk.install'
 	cd $srcdir/build/kuiviewer
 	make DESTDIR=$pkgdir install
 }
@@ -165,7 +165,7 @@ package_kdesdk-lokalize() {
 	pkgdesc='Computer-Aided Translation System'
 	depends=('kdebase-runtime' 'kdelibs' 'kdebindings-python')
 	optdepends=('translate-toolkit: enable extra python script')
-	install=kdesdk.install
+	install='kdesdk.install'
 	cd $srcdir/build/lokalize
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/lokalize
@@ -200,7 +200,7 @@ package_kdesdk-strigi-analyzer() {
 package_kdesdk-umbrello() {
 	pkgdesc='UML Modeller'
 	depends=('kdebase-runtime' 'kdelibs')
-	install=kdesdk.install
+	install='kdesdk.install'
 	cd $srcdir/build/umbrello
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/umbrello

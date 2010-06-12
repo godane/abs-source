@@ -1,9 +1,9 @@
-#$Id: PKGBUILD 74381 2010-03-30 21:22:56Z ibiru $
+#$Id: PKGBUILD 79300 2010-05-02 17:29:10Z ibiru $
 #Maintainer: Jan De Groot <jgc@archlinux.org>
 
 pkgname=gnome-keyring
-pkgver=2.30.0
-pkgrel=1
+pkgver=2.30.1
+pkgrel=2
 pkgdesc="GNOME Password Management daemon"
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
@@ -12,11 +12,19 @@ makedepends=('intltool' 'pkgconfig' 'python')
 options=('!libtool' '!emptydirs')
 url="http://www.gnome.org"
 install=gnome-keyring.install
-source=(http://ftp.gnome.org/pub/gnome/sources/${pkgname}/2.30/${pkgname}-${pkgver}.tar.bz2)
-sha256sums=('115551cc564689ded4f9c52793a26e85defbe11a6e019a13723d867d5b03c314')
+source=(http://ftp.gnome.org/pub/gnome/sources/${pkgname}/2.30/${pkgname}-${pkgver}.tar.bz2
+        add_service_for_org.freedesktop.secrets_1.patch
+	add_service_for_org.freedesktop.secrets_2.patch)
+sha256sums=('a76e7e06c3daa44340f8a3a0f3ef4b784973cdddff2d854cb30a3e7950796e5a'
+            '4172736975e9b3edb7e7aeaff11effea2a6bd9165059d977111083ad7624ad51'
+	    '4afad6d8e84731a85162f82c995128cc0b36b3db239ef7dce1a2f742a7fe9b68')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -Np1 -i ${srcdir}/add_service_for_org.freedesktop.secrets_1.patch || return 1
+  patch -Np1 -i ${srcdir}/add_service_for_org.freedesktop.secrets_2.patch || return 1
+  autoconf || return 1
+  automake || return 1
   ./configure --prefix=/usr --sysconfdir=/etc \
       --localstatedir=/var --disable-static \
       --libexecdir=/usr/lib/gnome-keyring \

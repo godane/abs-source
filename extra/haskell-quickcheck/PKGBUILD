@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 depends=(ghc=6.12.1 haskell-mtl=1.1.0.2-3 sh)
 options=('strip')
 source=(http://hackage.haskell.org/packages/archive/QuickCheck/$pkgver/QuickCheck-$pkgver.tar.gz)
-install=haskell-quickcheck.install
+install=$pkgname.install
 
 build() {
     cd $srcdir/QuickCheck-$pkgver

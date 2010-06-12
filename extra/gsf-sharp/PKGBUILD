@@ -1,10 +1,10 @@
-# $Id: PKGBUILD 34147 2009-04-06 20:50:43Z eric $
+# $Id: PKGBUILD 78202 2010-04-20 01:26:27Z dgriffiths $
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=gsf-sharp
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="libgsf .NET binding"
 arch=(i686 x86_64)
 url="http://go-mono.org/"

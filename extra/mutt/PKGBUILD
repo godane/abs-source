@@ -1,15 +1,15 @@
-# $Id: PKGBUILD 75622 2010-04-01 23:56:30Z giovanni $
+# $Id: PKGBUILD 78249 2010-04-20 04:42:42Z dgriffiths $
 # Maintainer: tobias [tobias [at] archlinux.org]
 pkgname=mutt
 pkgver=1.5.20
-pkgrel=3
+pkgrel=4
 pkgdesc="A small but very powerful text-based mail client"
 arch=(i686 x86_64)
 license=('GPL')
 url="http://www.mutt.org/"
 depends=('slang' 'openssl' 'gdbm' 'mime-types' 'zlib' 'libsasl' 'gpgme')
 makedepends=('gnupg')
-install=mutt.install
+install=${pkgname}.install
 source=(ftp://ftp.mutt.org/mutt/devel/${pkgname}-${pkgver}.tar.gz 
         mutt-unmailbox.patch
         mutt_ssl.patch)

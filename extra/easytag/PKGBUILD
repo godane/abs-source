@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 url="http://easytag.sourceforge.net/"
 depends=('id3lib' 'libid3tag' 'gtk2' 'libvorbis' 'flac' 'libmp4v2' 'speex' 'wavpack')
-install=easytag.install
+install=${pkgname}.install
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
 	'mp4v2-1.9.patch')
 md5sums=('6c5b9dc2bf1f3b0a11bd4efc81aaa9ee'

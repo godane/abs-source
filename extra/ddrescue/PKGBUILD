@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/ddrescue/ddrescue.html"
 license=('GPL3')
 depends=('gcc-libs')
-install=ddrescue.install
+install=$pkgname.install
 source=(http://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz)
 md5sums=('7146046bb1851351d1337bb1f5b4e903')
 

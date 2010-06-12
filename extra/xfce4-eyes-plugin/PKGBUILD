@@ -12,7 +12,7 @@ url="http://xfce-goodies.berlios.de/"
 groups=('xfce4-goodies')
 depends=('xfce4-panel')
 makedepends=('pkgconfig' 'perlxml')
-install=xfce4-eyes-plugin.install
+install=${pkgname}.install
 source=(http://goodies.xfce.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
 md5sums=('d0e3e25c0ab031e68c79b2358664ac9d')
 

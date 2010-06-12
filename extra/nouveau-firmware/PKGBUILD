@@ -1,13 +1,13 @@
-# $Id: PKGBUILD 62017 2009-12-30 06:43:15Z andyrtr $
+# $Id: PKGBUILD 81870 2010-06-06 12:40:37Z andyrtr $
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname=nouveau-firmware
 pkgver=20091212
-pkgrel=2
+pkgrel=4
 pkgdesc="nvidia opensource X driver - firmware needed for NV40 and above"
 arch=('any')
 url="http://nouveau.freedesktop.org/"
-depends=("nouveau-drm")
+depends=('')
 license=('custom') # needs to be added
 source=(http://people.freedesktop.org/~pq/nouveau-drm/nouveau-firmware-$pkgver.tar.gz)
 md5sums=('518ce9f432498969c88f63579032da74')

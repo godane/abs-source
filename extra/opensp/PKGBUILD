@@ -12,7 +12,7 @@ license=('BSD')
 depends=('gcc-libs')
 makedepends=('xmlto' 'docbook-xsl')
 options=('!libtool')
-source=(http://downloads.sourceforge.net/project/openjade/opensp/${pkgver}/OpenSP-${pkgver}.tar.gz)
+source=(http://download.sourceforge.net/openjade/OpenSP-$pkgver.tar.gz)
 md5sums=('670b223c5d12cee40c9137be86b6c39b')
 
 build() {

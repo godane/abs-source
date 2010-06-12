@@ -1,10 +1,10 @@
-# $Id: PKGBUILD 51267 2009-09-06 19:56:00Z andyrtr $
+# $Id: PKGBUILD 79261 2010-05-02 14:06:52Z andyrtr $
 # Maintainer: AndyRTR <andyrtr@archlinux.org>
 
 pkgname=libmspack
 pkgver=0.0.20060920alpha
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="A library for Microsoft compression formats"
 arch=('i686' 'x86_64')
 url="http://www.cabextract.org.uk/libmspack/"
 license=('GPL')

@@ -11,7 +11,7 @@ url="http://sourceforge.net/projects/mikmod/"
 arch=('i686' 'x86_64')
 depends=('glibc')
 options=('!libtool')
-install=libmikmod.install
+install=$pkgname.install
 source=(http://downloads.sourceforge.net/mikmod/${pkgname}-${pkgver}.tar.gz
         libmikmod-3.1.12-64bit-fix.diff
 	libmikmod-3.1.12-exitcrash-fix.diff

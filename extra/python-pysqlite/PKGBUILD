@@ -12,7 +12,7 @@ arch=(i686 x86_64)
 url="http://initd.org/tracker/pysqlite"
 depends=(python sqlite3)
 replaces=(pysqlite2)
-source=(http://pysqlite.googlecode.com/files/pysqlite-$pkgver.tar.gz \
+source=(http://oss.itsystementwicklung.de/download/pysqlite/$_branch/$pkgver/pysqlite-$pkgver.tar.gz \
         setup.cfg)
 
 build() {

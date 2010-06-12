@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 73500 2010-03-26 19:20:04Z andrea $
+# $Id: PKGBUILD 81572 2010-05-31 19:20:52Z ronald $
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgbase=kdeutils
@@ -15,7 +15,7 @@ pkgname=('kdeutils-ark'
          'kdeutils-printer-applet'
          'kdeutils-superkaramba'
          'kdeutils-sweeper')
-pkgver=4.4.2
+pkgver=4.4.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://www.kde.org'
@@ -25,7 +25,7 @@ makedepends=('pkgconfig' 'cmake' 'automoc4' 'kdelibs' 'kdepimlibs' 'kdebase-lib'
              'kdebase-workspace' 'kdebindings-python' 'system-config-printer-common'
              'libarchive' 'qimageblitz' 'kdepim-runtime')
 source=("http://download.kde.org/stable/${pkgver}/src/${pkgbase}-${pkgver}.tar.bz2")
-md5sums=('c923ca61e295d073bdebd90b41827b03')
+sha1sums=('9a8e3358862151417f4d10a1c19839442b077e52')
 
 build() {
 	cd ${srcdir}
@@ -69,7 +69,7 @@ package_kdeutils-kcharselect() {
 package_kdeutils-kdelirc() {
 	pkgdesc='Configure your remote controls for use with applications'
 	depends=('kdebase-workspace' 'kdelibs')
-	install=kdeutils.install
+	install='kdeutils.install'
 	cd $srcdir/build/kdelirc
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kdelirc
@@ -79,7 +79,7 @@ package_kdeutils-kdelirc() {
 package_kdeutils-kdf() {
 	pkgdesc='View Disk Usage'
 	depends=('kdebase-runtime' 'kdelibs')
-	install=kdeutils.install
+	install='kdeutils.install'
 	cd $srcdir/build/kdf
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kdf
@@ -89,7 +89,7 @@ package_kdeutils-kdf() {
 package_kdeutils-kfloppy() {
 	pkgdesc='Floppy Formatter'
 	depends=('kdebase-runtime' 'kdelibs')
-	install=kdeutils.install
+	install='kdeutils.install'
 	cd $srcdir/build/kfloppy
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kfloppy
@@ -99,7 +99,7 @@ package_kdeutils-kfloppy() {
 package_kdeutils-kgpg() {
 	pkgdesc='A GnuPG frontend'
 	depends=('kdebase-runtime' 'kdelibs' 'kdepimlibs' 'kde-agent' 'kdepim-runtime')
-	install=kdeutils.install
+	install='kdeutils.install'
 	cd $srcdir/build/kgpg
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kgpg
@@ -109,7 +109,7 @@ package_kdeutils-kgpg() {
 package_kdeutils-ktimer() {
 	pkgdesc='Countdown Launcher'
 	depends=('kdebase-runtime' 'kdelibs')
-	install=kdeutils.install
+	install='kdeutils.install'
 	cd $srcdir/build/ktimer
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/ktimer
@@ -119,7 +119,7 @@ package_kdeutils-ktimer() {
 package_kdeutils-kwallet() {
 	pkgdesc='Wallet Management Tool'
 	depends=('kdebase-runtime' 'kdelibs')
-	install=kdeutils.install
+	install='kdeutils.install'
 	cd $srcdir/build/kwallet
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kwallet
@@ -129,7 +129,7 @@ package_kdeutils-kwallet() {
 package_kdeutils-okteta() {
 	pkgdesc='Hex Editor'
 	depends=('kdebase-runtime' 'kdelibs' 'qca')
-	install=kdeutils.install
+	install='kdeutils.install'
 	cd $srcdir/build/okteta
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/okteta
@@ -146,7 +146,7 @@ package_kdeutils-printer-applet() {
 package_kdeutils-superkaramba() {
 	pkgdesc='An engine for cool desktop eyecandy.'
 	depends=('kdebase-runtime' 'kdelibs' 'kdebindings-python' 'qimageblitz')
-	install=kdeutils.install
+	install='kdeutils.install'
 	cd $srcdir/build/superkaramba
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/superkaramba

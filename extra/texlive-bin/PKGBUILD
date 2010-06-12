@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 77011 2010-04-09 17:10:51Z pierre $
+# $Id: PKGBUILD 78264 2010-04-20 07:28:39Z pierre $
 # Maintainer: francois at archlinux dot org
 
 pkgname=texlive-bin
 pkgver=2009.5
-pkgrel=3
+pkgrel=4
 pkgdesc="TeX Live binaries"
 license=('GPL')
 arch=('i686' 'x86_64')

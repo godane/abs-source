@@ -10,7 +10,7 @@ arch=("i686" "x86_64")
 url="http://fyre.navi.cx/"
 license=('GPL')
 depends=('openexr>=1.6' 'libglade' 'gnet' 'shared-mime-info')
-install=fyre.install
+install=${pkgname}.install
 source=(http://flapjack.navi.cx/releases/fyre/fyre-${pkgver}.tar.gz)
 md5sums=('44d5830c527325c1ee6fa6ea92b4ba03')
 

@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 70844 2010-03-02 06:11:31Z tpowa $
+# $Id: PKGBUILD 77410 2010-04-12 17:51:25Z tpowa $
 # Contributor: lowercase
 # Maintainer: Dale Blount <dale@archlinux.org>
 pkgname=syslinux

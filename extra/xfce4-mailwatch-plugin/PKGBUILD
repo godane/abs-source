@@ -13,7 +13,7 @@ groups=('xfce4-goodies')
 depends=('xfce4-panel' 'gnutls>=2.4.1')
 makedepends=('pkgconfig')
 options=('!libtool')
-install=xfce4-mailwatch-plugin.install
+install=${pkgname}.install
 source=(http://spuriousinterrupt.org/files/mailwatch/${pkgname}-${pkgver}.tar.bz2)
 md5sums=('f84dce86be1d7f25f169f262aaacee4e')
 

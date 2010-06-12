@@ -15,7 +15,7 @@ provides=('notification-daemon')
 conflicts=('notification-daemon' 'notification-daemon-xfce')
 replaces=('notification-daemon-xfce')
 options=('!libtool')
-install=xfce4-notifyd.install
+install=${pkgname}.install
 source=(http://spuriousinterrupt.org/files/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
 md5sums=('659ecaf37f0f7ee9e31f7b25f9813778')
 

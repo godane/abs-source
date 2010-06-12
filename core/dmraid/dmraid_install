@@ -3,7 +3,7 @@
 install ()
 {
     MODULES=" dm-mod dm-mirror "
-    BINARIES="dmraid dmsetup"
+    BINARIES="/sbin/dmraid /sbin/dmsetup"
     FILES=""
     SCRIPT="dmraid"
     add_dir "/dev/mapper"

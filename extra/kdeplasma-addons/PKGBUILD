@@ -66,7 +66,7 @@ pkgname=('kdeplasma-addons-applets-bball'
          'kdeplasma-addons-wallpapers-pattern'
          'kdeplasma-addons-wallpapers-virus'
          'kdeplasma-addons-wallpapers-weather')
-pkgver=4.4.2
+pkgver=4.4.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://www.kde.org'
@@ -75,7 +75,7 @@ groups=('kde' 'kdeplasma-addons')
 makedepends=('pkgconfig' 'cmake' 'automoc4' 'kdebase-workspace' 'libqalculate'
              'kdegraphics-libs' 'kdeedu-marble' 'eigen' 'scim' 'qwt')
 source=("http://download.kde.org/stable/${pkgver}/src/${pkgbase}-${pkgver}.tar.bz2")
-md5sums=('f2b570d3b9d5692aa6d959882ec40ba9')
+sha1sums=('0fdd55b878b82f7c69c7e97dac65b69945ddf90c')
 
 build() {
 	cd $srcdir
@@ -91,7 +91,7 @@ build() {
 package_kdeplasma-addons-applets-bball() {
 	pkgdesc='A bouncy ball for plasma'
 	depends=('kdebase-workspace')
-	install=kdeplasma-addons-applets.install
+	install='kdeplasma-addons-applets.install'
 	cd $srcdir/build/applets/bball
 	make DESTDIR=$pkgdir install
 }
@@ -158,7 +158,7 @@ package_kdeplasma-addons-applets-eyes() {
 package_kdeplasma-addons-applets-fifteenpuzzle() {
 	pkgdesc='Put the pieces in order'
 	depends=('kdebase-workspace')
-	install=kdeplasma-addons-applets.install
+	install='kdeplasma-addons-applets.install'
 	cd $srcdir/build/applets/fifteenPuzzle
 	make DESTDIR=$pkgdir install
 }
@@ -241,7 +241,7 @@ package_kdeplasma-addons-applets-lancelot() {
 	replaces=('lancelot')
 	provides=('lancelot')
 	conflicts=('lancelot')
-	install=kdeplasma-addons-applets-lancelot.install
+	install='kdeplasma-addons-applets-lancelot.install'
 	cd $srcdir/build/applets/lancelot
 	make DESTDIR=$pkgdir install
 }
@@ -347,7 +347,7 @@ package_kdeplasma-addons-applets-plasmaboard() {
 package_kdeplasma-addons-applets-previewer() {
 	pkgdesc='Quickly preview a variety of files'
 	depends=('kdebase-workspace')
-	install=kdeplasma-addons-applets.install
+	install='kdeplasma-addons-applets.install'
 	cd $srcdir/build/applets/previewer
 	make DESTDIR=$pkgdir install
 }
@@ -355,7 +355,7 @@ package_kdeplasma-addons-applets-previewer() {
 package_kdeplasma-addons-applets-qalculate() {
 	pkgdesc='A powerful mathematical equation solver'
 	depends=('kdebase-workspace' 'libqalculate')
-	install=kdeplasma-addons-applets.install
+	install='kdeplasma-addons-applets.install'
 	cd $srcdir/build/applets/qalculate
 	make DESTDIR=$pkgdir install
 }

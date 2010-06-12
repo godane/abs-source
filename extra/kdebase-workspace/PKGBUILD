@@ -2,8 +2,8 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=kdebase-workspace
-pkgver=4.4.2
-pkgrel=2
+pkgver=4.4.4
+pkgrel=1
 pkgdesc="KDE Base Workspace"
 arch=('i686' 'x86_64')
 url='http://www.kde.org'
@@ -19,28 +19,30 @@ makedepends=('pkgconfig' 'cmake' 'automoc4' 'networkmanager' 'bluez' 'kdebinding
              'kdebindings-ruby')
 replaces=('kdmtheme' 'kde-common' 'guidance-power-manager' 'policykit-kde')
 conflicts=('kde-common' 'guidance-power-manager' 'policykit-kde')
-install=kdebase-workspace.install
+install='kdebase-workspace.install'
 backup=('usr/share/config/kdm/kdmrc'
         'etc/pam.d/kde'
         'etc/pam.d/kde-np'
         'etc/pam.d/kscreensaver')
 source=("http://download.kde.org/stable/${pkgver}/src/${pkgname}-${pkgver}.tar.bz2"
         'kdm-zsh-profile.patch' 'kdm' 'kde.pam' 'kde-np.pam' 'kscreensaver.pam'
-        'fixpath.patch' 'terminate-server.patch')
-md5sums=('6251e5d0060bd1529f90b9eaf5f84230'
-         '721e97031b62aee8914e8617e86f9235'
-         '363a36b63f84bac79959cfbefdb8309e'
-         '10a490653b002e6f9e7476ff9d37c011'
-         '552337fd9a3982d809ea16c7f0033d42'
-         '367a3538f54db71f108b34cfa31088ac'
-         '47a1f12673f66e62e2463efd7037a26a'
-         '814350c52c135d6f7bdada1e29223d38')
+        'fixpath.patch' 'terminate-server.patch' 'screensaver-sleep.patch')
+sha1sums=('7b20bc91a5969b4c42c83076926cf6838b2ba47b'
+          '8c2bdefb23a03b753b78d16944d03fa3939d2d99'
+          '5db3a245201bd4a50e65aa2ef583cf5490e4f646'
+          'f7b38af38549242a240f1a90ab9964ca8a366129'
+          '603cc79c4d2b4eae62bb5f244aeecb3a778b5516'
+          '106635aa1aae51d6f0668b1853f6c49a4fe9d3d8'
+          'd7b5883f7e65c6839b1f65f94d58026673dd0226'
+          'ac7bc292c865bc1ab8c02e6341aa7aeaf1a3eeee'
+          'd676932e89f201d1f381615651761af1badb88be')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
 	patch -p0 -i ${srcdir}/kdm-zsh-profile.patch || return 1
 	patch -p0 -i ${srcdir}/fixpath.patch || return 1
 	patch -p0 -i ${srcdir}/terminate-server.patch || return 1
+        patch -p1 -i ${srcdir}/screensaver-sleep.patch || return 1 # FS#19426      
 
 	cd ${srcdir}
 	mkdir build

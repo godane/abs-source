@@ -1,11 +1,12 @@
-# $Id: PKGBUILD 75804 2010-04-04 08:28:57Z giovanni $
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# $Id: PKGBUILD 80167 2010-05-13 11:13:12Z andrea $
+# Maintainer:
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: dorphell <dorphell@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=feh
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.5
+pkgrel=1
 pkgdesc="A fast, lightweight image viewer which uses imlib2"
 arch=('i686' 'x86_64')
 url="https://derf.homelinux.org/~derf/projects/feh/"
@@ -13,7 +14,7 @@ license=('MIT')
 depends=('libxinerama' 'giblib' 'perl')
 makedepends=('libxt')
 source=("https://derf.homelinux.org/~derf/projects/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('19906a6e319e99e0d98856f64324fed8')
+md5sums=('aee156f0a82582108c5a56fbe85319ae')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

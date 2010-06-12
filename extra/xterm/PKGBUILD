@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 74653 2010-03-31 19:29:12Z giovanni $
+# $Id: PKGBUILD 80858 2010-05-22 15:13:56Z jgc $
 #  ppc Maintainer: Alexander Baldeck <alexander@archlinux.org>
 # i686 Maintainer: Jan de Groot <jgc@archlinux.org>
 pkgname=xterm
-pkgver=256
-pkgrel=1
+pkgver=258
+pkgrel=2
 pkgdesc="X Terminal Emulator"
 arch=('i686' 'x86_64')
 url="http://invisible-island.net/xterm/"
@@ -12,7 +12,7 @@ depends=('libxft' 'libxaw' 'ncurses' 'xorg-apps')
 groups=('xorg')
 source=(ftp://invisible-island.net/${pkgname}/${pkgname}-${pkgver}.tgz
         LICENSE)
-md5sums=('6da5c166e1c633fc26917b66d6433f1f'
+md5sums=('bcf4f0ba51f5f58fd5bef76b3d05e40e'
          '10ecc3f8ee91e3189863a172f68282d2')
 
 build() {
@@ -40,8 +40,14 @@ build() {
       --enable-freetype \
       --enable-luit \
       --enable-mini-luit \
-      --enable-narrowproto || return 1
+      --enable-narrowproto \
+      --enable-exec-xterm \
+      --with-tty-group=tty || return 1
   make || return 1
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install || return 1
   chmod 0755 "${pkgdir}/usr/bin/xterm" || return 1
 

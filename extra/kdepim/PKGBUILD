@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 73496 2010-03-26 19:19:42Z andrea $
+# $Id: PKGBUILD 81568 2010-05-31 19:20:31Z ronald $
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgbase=kdepim
@@ -19,7 +19,7 @@ pkgname=('kdepim-akonadiconsole'
          'kdepim-ktimetracker'
          'kdepim-libkdepim'
          'kdepim-wizards')
-pkgver=4.4.2
+pkgver=4.4.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://www.kde.org'
@@ -28,7 +28,7 @@ groups=('kde' 'kdepim')
 makedepends=('pkgconfig' 'cmake' 'automoc4' 'boost' 'kdelibs' 'kdepimlibs'
              'kdepim-runtime' 'gnokii' 'libxss' 'kdebase-runtime' 'pilot-link' 'kde-agent')
 source=("http://download.kde.org/stable/${pkgver}/src/${pkgbase}-${pkgver}.tar.bz2")
-md5sums=('db74243fb2192b64bb613027e1c0cc23')
+sha1sums=('8edd0abf479d29b55463d8f8c698477f66120ed6')
 
 build() {
 	cd ${srcdir}
@@ -44,7 +44,7 @@ build() {
 package_kdepim-akonadiconsole() {
 	pkgdesc='Akonadi Management and Debugging Console'
 	depends=('kdepim-libkdepim' 'kdebase-runtime')
-	install=kdepim.install
+	install='kdepim.install'
 	cd $srcdir/build/akonadiconsole
 	make DESTDIR=$pkgdir install
 }
@@ -52,7 +52,8 @@ package_kdepim-akonadiconsole() {
 package_kdepim-akregator() {
 	pkgdesc='A Feed Reader for KDE'
 	depends=('kdepim-libkdepim' 'kdebase-runtime')
-	install=kdepim.install
+	url="http://kde.org/applications/internet/akregator/"
+	install='kdepim.install'
 	cd $srcdir/build/akregator
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/akregator
@@ -64,9 +65,10 @@ package_kdepim-akregator() {
 package_kdepim-blogilo() {
 	pkgdesc='A KDE Blogging Client'
 	depends=('kdebase-runtime' 'kdepimlibs' 'kdepim-runtime')
+	url="http://kde.org/applications/internet/blogilo/"
 	replaces=('blogilo')
 	conflicts=('blogilo')
-	install=kdepim.install
+	install='kdepim.install'
 	cd $srcdir/build/blogilo
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/blogilo
@@ -83,7 +85,8 @@ package_kdepim-console() {
 package_kdepim-kaddressbook() {
 	pkgdesc='Contact Manager'
 	depends=('kdepim-libkdepim' 'kdebase-runtime')
-	install=kdepim.install
+	url="http://kde.org/applications/office/kaddressbook/"
+	install='kdepim.install'
 	cd $srcdir/build/kaddressbook
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kaddressbook
@@ -97,7 +100,7 @@ package_kdepim-kaddressbook() {
 package_kdepim-kalarm() {
 	pkgdesc='Personal Alarm Scheduler'
 	depends=('kdepim-libkdepim' 'kdebase-runtime')
-	install=kdepim.install
+	install='kdepim.install'
 	cd $srcdir/build/kalarm
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kalarm
@@ -107,7 +110,7 @@ package_kdepim-kalarm() {
 package_kdepim-kjots() {
 	pkgdesc='Note Taker'
 	depends=('kdebase-runtime' 'kdepimlibs' 'kdepim-runtime')
-	install=kdepim.install
+	install='kdepim.install'
 	cd $srcdir/build/kjots
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/kjots
@@ -128,7 +131,8 @@ package_kdepim-kleopatra() {
 package_kdepim-kmail() {
 	pkgdesc='Mail Client'
 	depends=('kdepim-libkdepim' 'kdebase-runtime')
-	install=kdepim.install
+	url="http://kde.org/applications/internet/kmail/"
+	install='kdepim.install'
 	conflicts=('kdepim-kmailcvt' 'kdepim-ksendemail' 'kdepim-libksieve'
 	           'kdepim-mimelib' 'kdepim-plugins')
 	replaces=('kdepim-kmailcvt' 'kdepim-ksendemail' 'kdepim-libksieve'
@@ -143,7 +147,8 @@ package_kdepim-kmail() {
 package_kdepim-knode() {
 	pkgdesc='News Reader'
 	depends=('kdebase-runtime' 'kdepim-libkdepim')
-	install=kdepim.install
+	url="http://kde.org/applications/internet/knode/"
+	install='kdepim.install'
 	cd $srcdir/build/knode
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/knode
@@ -155,7 +160,7 @@ package_kdepim-knode() {
 package_kdepim-knotes() {
 	pkgdesc='Popup Notes'
 	depends=('kdepim-libkdepim' 'kdebase-runtime')
-	install=kdepim.install
+	install='kdepim.install'
 	cd $srcdir/build/knotes
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/knotes
@@ -167,7 +172,8 @@ package_kdepim-knotes() {
 package_kdepim-kontact() {
 	pkgdesc='Personal Information Manager'
 	depends=('kdebase-runtime' 'kdepim-korganizer')
-	install=kdepim.install
+	url="http://kde.org/applications/office/kontact/"
+	install='kdepim.install'
 	conflcits=('kdepim-kontactinterfaces')
 	replaces=('kdepim-kontactinterfaces')
 	for i in kontact/src kontact/pics doc/kontact\
@@ -180,7 +186,8 @@ package_kdepim-kontact() {
 package_kdepim-korganizer() {
 	pkgdesc='Calendar and Scheduling Program'
 	depends=('kdepim-libkdepim' 'kdebase-runtime')
-	install=kdepim.install
+	url="http://kde.org/applications/office/korganizer"
+	install='kdepim.install'
 	cd $srcdir/build/korganizer
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/korganizer
@@ -199,7 +206,7 @@ package_kdepim-kresources() {
 package_kdepim-ktimetracker() {
 	pkgdesc='Personal Time Tracker'
 	depends=('kdebase-runtime' 'kdepim-kresources')
-	install=kdepim.install
+	install='kdepim.install'
 	cd $srcdir/build/ktimetracker
 	make DESTDIR=$pkgdir install
 	cd $srcdir/build/doc/ktimetracker

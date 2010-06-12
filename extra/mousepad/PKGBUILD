@@ -12,7 +12,7 @@ depends=('libxfcegui4>=4.6.0' 'desktop-file-utils')
 makedepends=('pkgconfig' 'intltool' 'perl')
 options=('!libtool')
 url=('http://www.xfce.org/~benny/apps.html')
-install=mousepad.install
+install=${pkgname}.install
 source=(http://www.xfce.org/archive/xfce-4.6.0/src/${pkgname}-${pkgver}.tar.bz2
         resensitize-find-button.patch)
 md5sums=('d98854edb76d823ac20b266fdf5a64a1'

@@ -9,7 +9,7 @@ url='http://www.arora-browser.org'
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('qt' 'openssl' 'xdg-utils')
-install=arora.install
+install='arora.install'
 source=("http://arora.googlecode.com/files/arora-${pkgver}.tar.gz")
 md5sums=('ccef0f214e0f03828cde8c521f7a5225')
 

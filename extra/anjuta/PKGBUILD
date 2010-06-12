@@ -1,22 +1,22 @@
-# $Id: PKGBUILD 75432 2010-04-01 15:19:46Z giovanni $
+# $Id: PKGBUILD 81922 2010-06-07 10:38:37Z jgc $
 # Mantainer: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: Harley Laue <losinggeneration@yahoo.com>
 
 pkgname=anjuta
-pkgver=2.30.0.0
-pkgrel=3
+pkgver=2.30.2.0
+pkgrel=1
 pkgdesc="Anjuta Integrated Development Environment (IDE)"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('libunique>=1.1.6' 'gconf>=2.28.0' 'vte>=0.23.5' 'gdl>=2.30.0' 'autogen>=5.9.9' 'devhelp>=2.28.1' 'gtksourceview2>=2.10.0' 'glade>=3.6.7' 'libgda>=4.0.8' 'subversion>=1.6.9' 'gnome-icon-theme>=2.30' 'perl-locale-gettext')
-makedepends=('gnome-doc-utils>=0.18.0' 'intltool')
+depends=('libunique>=1.1.6' 'gconf>=2.28.1' 'vte>=0.24.1' 'gdl>=2.30.0' 'autogen>=5.9.9' 'devhelp>=2.28.1' 'gtksourceview2>=2.10.1' 'glade>=3.6.7' 'libgda>=4.0.8' 'subversion>=1.6.9' 'gnome-icon-theme>=2.30.2' 'perl-locale-gettext')
+makedepends=('gnome-doc-utils>=0.20.1' 'intltool')
 conflicts=('gnome-build')
 replaces=('gnome-build')
 url="http://anjuta.sourceforge.net/"
 install=anjuta.install
 source=(ftp://ftp.gnome.org/pub/gnome/sources/${pkgname}/2.30/${pkgname}-${pkgver}.tar.bz2)
 options=('!libtool' '!emptydirs')
-sha256sums=('09cf7e008c9f85dcafc8d13ce691c821c90ca4bf80f4d1c8af0bd83c6914c0cc')
+sha256sums=('a281fe303fce08026407b24e8a676f4458031bc6dd6b2799c028494d22dcd34b')
 
 build() {
   cd "${srcdir}/anjuta-${pkgver}"

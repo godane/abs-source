@@ -1,22 +1,22 @@
-# $Id: PKGBUILD 72655 2010-03-19 03:19:22Z allan $
+# $Id: PKGBUILD 80784 2010-05-22 08:05:08Z allan $
 # Maintainer: Allan McRae <allan@archlinux.org>
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 
 pkgname=binutils
 pkgver=2.20.1
-pkgrel=1
-_date=20100318
+pkgrel=3
+_date=20100521
 pkgdesc="A set of programs to assemble and manipulate binary and object files"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/binutils/"
 license=('GPL')
 groups=('base')
-depends=('glibc>=2.11.1-2' 'zlib')
+depends=('glibc>=2.12-1' 'zlib')
 options=('!libtool' '!distcc' '!ccache')
 install=binutils.install
 source=(ftp://ftp.archlinux.org/other/${pkgname}/${pkgname}-${pkgver}_${_date}.tar.bz2)
-md5sums=('c153213a20a5075bd98d7f12fbd38a51')
+md5sums=('67053ffd8582e646e171fccd55b2f0f6')
 
 mksource() {
   mkdir ${pkgname}-${_date}
@@ -46,19 +46,23 @@ build() {
   make configure-host || return 1
 
   make tooldir=${pkgdir}/usr || return 1
+}
+
+package() {
+  cd ${srcdir}/build
   make prefix=${pkgdir}/usr tooldir=${pkgdir}/usr install
   install -m644 ${srcdir}/include/libiberty.h ${pkgdir}/usr/include
 
-  if [ "${CARCH}" = "x86_64" ]; then
-    # Rebuild libiberty.a with -fPIC
-    make -C libiberty clean
-    make CFLAGS="$CFLAGS -fPIC" -C libiberty
-    install -m644 libiberty/libiberty.a ${pkgdir}/usr/lib
-    # Rebuild libbfd.a with -fPIC
-    make -C bfd clean
-    make CFLAGS="$CFLAGS -fPIC" -C bfd
-    install -m644 bfd/libbfd.a ${pkgdir}/usr/lib
-  fi
+  # Rebuild libiberty.a with -fPIC
+  make -C libiberty clean
+  make CFLAGS="$CFLAGS -fPIC" -C libiberty
+  install -m644 libiberty/libiberty.a ${pkgdir}/usr/lib
+
+  # Rebuild libbfd.a with -fPIC
+  make -C bfd clean
+  # hidden visability prevent 3rd party shared libraries exporting bfd non-stable API
+  make CFLAGS="$CFLAGS -fPIC -fvisibility=hidden" -C bfd
+  install -m644 bfd/libbfd.a ${pkgdir}/usr/lib
 
   rm -f ${pkgdir}/usr/share/man/man1/{dlltool,nlmconv,windres,windmc}*
 

@@ -15,8 +15,6 @@ source=(http://ftp.novell.com/pub/mono/sources/gtksourceview-sharp2/${pkgname}-$
 	gtksourceview-sharp2-gnome-print.patch)
 license=('LGPL2')
 arch=('i686' 'x86_64')
-md5sums=('f0c9c6dc24b677d9208b0c8c38e769a4'
-         '8c848fae3e04ab9099f0d3a3b67cdbc0')
 
 build() {
   export MONO_SHARED_DIR="${srcdir}/weird"

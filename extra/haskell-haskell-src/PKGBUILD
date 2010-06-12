@@ -11,7 +11,7 @@ makedepends=(happy)
 depends=(ghc=6.12.1 sh)
 options=('strip')
 source=(http://hackage.haskell.org/packages/archive/haskell-src/$pkgver/haskell-src-$pkgver.tar.gz)
-install=haskell-haskell-src.install
+install=$pkgname.install
 
 build() {
     cd $srcdir/haskell-src-$pkgver

@@ -10,7 +10,7 @@ arch=(i686 x86_64)
 license=('APACHE')
 depends=('apache>=2.2.11' 'xsp>=2.6.3')
 url="http://www.go-mono.com"
-install=mod_mono.install
+install=${pkgname}.install
 source=(http://ftp.novell.com/pub/mono/sources/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
 md5sums=('c617570744a83f74901731857382b5f3')
 

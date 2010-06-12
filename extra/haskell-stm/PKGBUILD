@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 depends=(ghc=6.12.1 'haskell-array=0.3.0.0' sh)
 options=('strip')
 source=(http://hackage.haskell.org/packages/archive/stm/$pkgver/stm-$pkgver.tar.gz)
-install=haskell-stm.install
+install=$pkgname.install
 
 build() {
     cd $srcdir/stm-$pkgver
