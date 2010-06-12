@@ -1,18 +1,19 @@
 # Maintainer: Kessia 'even' Pinheiro <kessiapinheiro at gmail.com>
 pkgname=gufw
 _realname=gui-ufw
-pkgver=9.04.2
-_pkgvermain=9.04
+pkgver=9.10.1
+_pkgvermain=9.10
 pkgrel=1
 pkgdesc="an easy to use firewall, powered by ufw (which is an easy to use firewall itself)."
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('ufw' 'pygtk' 'sudo' 'gksu' 'gnome-python')
 url="http://gufw.tuxfamily.org/index.html"
-source=("http://launchpad.net/${_realname}/${pkgname}-${_pkgvermain}-jaunty/${_pkgvermain}/+download/${pkgname}_${pkgver}-all.tar.gz"
+source=(#"http://launchpad.net/${_realname}/${pkgname}-${_pkgvermain}-jaunty/${_pkgvermain}/+download/${pkgname}_${pkgver}-all.tar.gz"
+	"ftp://ftp.linuxforum.hu/mirrors/frugalware/pub/frugalware/frugalware-current/source/gnome-extra/${pkgname}/${pkgname}_${pkgver}-all.tar.gz"
         'gufw.desktop')
 install='gufw.install'
-md5sums=('1677d1a5208c62efb1f6bfc07d0be0ce'
+md5sums=('361d11b3cf3af4ffc4a4d34609de80f1'
          '25db1a59b6f3897aa530f0c606f1103d')
 
 build() {

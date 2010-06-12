@@ -16,7 +16,7 @@ makedepends=('pyrex>=0.9.8.0' 'pkgconfig' 'intltool')
 optdepends=('dnsmasq: For creating PAN network'
 	    'gconf: For gconf configuration support'
 	    'pulseaudio: To use the pulseaudio plugin'
-	    'notification-daemon, libnotify: for desktop notifications'
+	    'notification-daemon: for desktop notifications'
 	    'modemmanager: for modem management service')
 options=('!libtool')
 install=$pkgname.install

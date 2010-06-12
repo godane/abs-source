@@ -19,7 +19,8 @@ optdepends=('ghostscript: for Ghostscript support'
             'libxml2: for XML support'
             'jasper: for JPEG-2000 support')
 options=('!makeflags' '!docs')
-source=(ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz \
+source=(#ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz
+	http://ftp.nluug.nl/ImageMagick/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz
         libpng_mmx_patch_x86_64.patch 
 	perlmagick.rpath.patch)
 md5sums=('e145e9c47befaa9734926c45bd9d7572' 

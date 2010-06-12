@@ -9,7 +9,8 @@ arch=(i686 x86_64)
 url="http://www.procmail.org"
 license=('GPL' 'custom:Artistic')
 depends=('glibc')
-source=(http://www.procmail.org/${pkgname}-${pkgver}.tar.gz)
+source=(#http://www.procmail.org/${pkgname}-${pkgver}.tar.gz
+	ftp://ftp.uni-weimar.de/pub/mail/${pkgname}/${pkgname}-${pkgver}.tar.gz)
 md5sums=('1678ea99b973eb77eda4ecf6acae53f1')
 
 build() {

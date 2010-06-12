@@ -12,8 +12,8 @@ license=('GPL3')
 depends=('perl-gtk2-trayicon')
 optdepends=("alsa-utils: for ALSA support"
 	"oss: for OSS support")
-source=(http://olwtools.googlecode.com/files/$pkgname-$pkgver.tar.gz)
-md5sums=('c57b3ffde4db2fafe63013194f167fe6')
+source=(http://olwtools.googlecode.com/files/$pkgname-$pkgver-fixed.tar.gz)
+md5sums=('2a9742d38efacc1e4aefa3e0b9afa5e0')
 
 build() {
   cd ${srcdir}/$pkgname-$pkgver

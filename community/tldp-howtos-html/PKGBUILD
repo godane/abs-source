@@ -3,7 +3,7 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=tldp-howtos-html
-pkgver=20100524
+pkgver=20100611
 pkgrel=1
 pkgdesc="HOWTO's from tldp.org"
 arch=('any')
@@ -12,7 +12,7 @@ license=("FDL")
 depends=()
 options=('docs')
 source=(http://www.ibiblio.org/pub/Linux/docs/HOWTO/other-formats/html/Linux-html-HOWTOs.tar.bz2)
-md5sums=('19507c5f9df92bd7491384c1a583d28d')
+md5sums=('db0fbcfa5f9894be68dbfbee62c11145')
 
 build() {
     cd $startdir/src

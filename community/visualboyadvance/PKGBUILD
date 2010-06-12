@@ -12,7 +12,7 @@ url="http://vba.ngemu.com/"
 license=("GPL")
 depends=('libglademm' 'sdl')
 makedepends=('nasm')
-backup=('/etc/VisualBoyAdvance.cfg')
+backup=('etc/VisualBoyAdvance.cfg')
 source=(http://downloads.sourceforge.net/sourceforge/vba/VisualBoyAdvance-src-${pkgver}.tar.gz
         1.7.2-deprecatedsigc++.patch 1.7.2-gcc34.patch 1.7.2-gcc41.patch
 	1.7.2-glibc.patch 1.7.2-homedir.patch 1.7.2-uninit.patch)

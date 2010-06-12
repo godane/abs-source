@@ -10,7 +10,7 @@ url="http://hg.horna.org.ua/wifi-select/"
 license=('GPL2')
 depends=('netcfg')
 source=($pkgname-$pkgver.tar.gz::http://hg.horna.org.ua/wifi-select/archive/$pkgver.tar.gz)
-md5sums=('c7763d25bd4f85849a09a2d5fa88d5bb')
+md5sums=('a7e2c31618544981d1157264db575bc7')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

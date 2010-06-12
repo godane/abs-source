@@ -9,7 +9,7 @@ url="http://pyro.sourceforge.net"
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('python')
-source=(http://downloads.sourceforge.net/pyro/Pyro-${pkgver}.tar.gz)
+source=(http://www.xs4all.nl/~irmen/pyro3/download/Pyro-${pkgver}.tar.gz)
 md5sums=('7fc6b8b939073d4adb0e8939c59aaf1e')
 
 build() {

@@ -4,7 +4,7 @@
 
 pkgname=lazarus
 pkgver=0.9.29
-_snapshot=25678-20100527
+_snapshot=26033-20100611
 pkgrel=1
 pkgdesc='Delphi-like IDE for FreePascal'
 url='http://www.lazarus.freepascal.org/'
@@ -14,7 +14,7 @@ depends=('fpc' 'fpc-src' 'gdk-pixbuf' 'gtk2')
 makedepends=(rpmextract)
 options=('!emptydirs' '!makeflags')
 source=(http://snapshots.lazarus.shikami.org/files/lazarus-$pkgver.${_snapshot}.src.rpm)
-md5sums=('afda29734c84c7d4aad24d199723e4ed')
+md5sums=('50d0f8c510dda77244c3a28fe6232caa')
 
 build() {
   [ $NOEXTRACT -eq 1  ] || rpmextract.sh lazarus-$pkgver.${_snapshot}.src.rpm

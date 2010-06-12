@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 82065 2010-06-08 13:08:00Z paul $
+# $Id: PKGBUILD 81843 2010-06-05 21:04:37Z paul $
 # Maintainer: Paul Mattal <paul@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
@@ -15,7 +15,8 @@ backup=('etc/dnsmasq.conf')
 install=
 source=("http://www.thekelleys.org.uk/$pkgname/$pkgname-$pkgver.tar.gz" 
         'rc.dnsmasq')
-md5sums=('b093d7c6bc7f97ae6fd35d048529232a' 'e956eee1ec24212a3254d2b168187495')
+md5sums=('b093d7c6bc7f97ae6fd35d048529232a'
+         'e956eee1ec24212a3254d2b168187495')
 
 build() {
   cd $srcdir/$pkgname-$pkgver

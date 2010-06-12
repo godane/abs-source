@@ -10,8 +10,8 @@ url="http://www.frostwire.com"
 license=('GPL')
 depends=('java-runtime' 'hicolor-icon-theme')
 install=$pkgname.install
-source=(http://main2.frostwire.com/$pkgname/$pkgver/$pkgname-$pkgver.noarch.tar.gz
-        $pkgname
+source=(http://downloads.sourceforge.net/project/${pkgname}/FrostWire%204.20/${pkgver}/${pkgname}-${pkgver}.noarch.tar.gz
+	$pkgname
         $pkgname.desktop
         icons.tar.gz
         do-not-run-unpack200-py.patch

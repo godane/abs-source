@@ -14,7 +14,7 @@ makedepends=('intltool' 'pkgconfig')
 groups=('compiz-fusion' 'compiz-fusion-kde' 'compiz-fusion-gtk')
 conflicts=('emerald-themes-git')
 source=(http://cgit.compiz-fusion.org/fusion/decorators/emerald-themes/snapshot/$pkgname-$pkgver.tar.bz2)
-md5sums=('8600795faed12c887dd63203f6338402')
+md5sums=('6a078306fa01fff60afd80271f42e54f')
 
 build() {
   cd $startdir/src/$pkgname

@@ -12,7 +12,8 @@ url="http://www.cubewano.org/subdl"
 license=('GPL3')
 depends=('python')
 makedepends=('patch')
-source=(http://www.cubewano.org/$pkgname/downloads/$pkgver/$pkgname-$pkgver.tar.gz
+source=(#http://www.cubewano.org/$pkgname/downloads/$pkgver/$pkgname-$pkgver.tar.gz
+	http://212.219.56.153/sites/www.ibiblio.org/gentoo/distfiles/$pkgname-$pkgver.tar.gz
         $pkgname-$pkgver-api.patch)
 md5sums=('9932f84855533aeb413e8c719bf9c500'
          '013fbb829fee96fdd7a8c6befcb4e3fc')

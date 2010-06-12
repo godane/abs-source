@@ -31,6 +31,10 @@ if [ ! $cvs -o $cvs = false ]; then
   makedepends=('freeglut' 'libtiff' 'librsvg' 'yasm')
 fi
 
+md5sums=('b5b9720b9430b1f5e2aa0b2df533fed8'
+         '0e53299444ff5570639c8f59372bc98c'
+         '6f24380ead068ef481a348bef00b3733')
+
 build() {
   if [ $cvs = true ]; then
     cd $startdir/src/

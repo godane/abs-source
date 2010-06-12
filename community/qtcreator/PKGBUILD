@@ -17,7 +17,8 @@ depends=('qt>=4.6.1-1')
 optdepends=('qt-doc: for the integrated Qt documentation'
             'gdb: for the debugger')
 options=(docs)
-source=("http://download.qtsoftware.com/qtcreator/qt-creator-${pkgver}-src.tar.gz"
+source=(#"http://download.qtsoftware.com/qtcreator/qt-creator-${pkgver}-src.tar.gz"
+	"http://www.mirrorservice.org/sites/www.ibiblio.org/gentoo/distfiles/qt-creator-${pkgver}-src.tar.gz"
         "ftp://ftp.qt.nokia.com/qt/source/qt-everywhere-opensource-src-${_qtver}.tar.gz"
         paths.patch
         qtcreator.desktop

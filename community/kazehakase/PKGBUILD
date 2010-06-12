@@ -13,7 +13,8 @@ license=('GPL')
 depends=('xulrunner>=1.9.2')
 makedepends=('intltool')
 options=('!libtool')
-source=(http://downloads.sourceforge.jp/${pkgname}/43802/${pkgname}-${pkgver}.tar.gz
+source=(#http://downloads.sourceforge.jp/${pkgname}/43802/${pkgname}-${pkgver}.tar.gz
+	http://globalbase.dl.sourceforge.jp/${pkgname}/43802/${pkgname}-${pkgver}.tar.gz
 	kazehakase-rev3870-xul192-workaround.patch
 	kazehakase-0.5.7-external-rev938-libegg-parallel_make.patch)
 md5sums=('22d831982ebe010338907381caee8fdf'

@@ -10,7 +10,8 @@ arch=('i686' 'x86_64')
 url="http://www.interlis.ch/content/index.php?language=e"
 license=('LGPL')
 depends=('java-runtime')
-source=(http://www.interlis.ch/interlis2/docs23/ili2c-$pkgver.zip
+source=(#http://www.interlis.ch/interlis2/docs23/ili2c-$pkgver.zip
+	http://downloads.sourceforge.net/project/umleditor/ili2c/${pkgver}/ili2c-${pkgver}.zip
 	ili2c)
 
 build() {

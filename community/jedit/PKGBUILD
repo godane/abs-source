@@ -13,8 +13,9 @@ license=('GPL')
 depends=('java-runtime')
 source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}${pkgver}install.jar 
 	jedit-bin jedit.desktop)
-md5sums=('0d2ec0d877abac09316793f16e1bc87b' 'b31829a0cc606caf555d35458b501e03'
-	 '71546caddc1f6c4a8cb632af2d88cc83')
+md5sums=('0d2ec0d877abac09316793f16e1bc87b'
+         'b31829a0cc606caf555d35458b501e03'
+         '21ff0dd64aa2f5f736ddf27963bfca19')
 noextract=(${pkgname}${pkgver}install.jar)
 
 build() {

@@ -16,11 +16,11 @@ makedepends=('pkgconfig' 'intltool')
 conflicts=('gimp' 'gimp-devel')
 provides=('gimp' 'gimp-devel')
 install=gimpshop.install
-source=(http://www.plasticbugs.com/blogimg/${pkgname}-${pkgver}.tar.bz2
+source=(http://www.computerdefense.org/${pkgname}/${pkgname}-${pkgver}.tar.bz2
 	png_patch.diff
 	linux.gpl)
-md5sums=('78e25b31b1dab1469cc24ba2a8e30954'
-	 '8d44110eaa10420b467c40bbf23ade4b'
+md5sums=('8379ea6e41f324b0938afc777ed706e0'
+         '8d44110eaa10420b467c40bbf23ade4b'
          'bb27bc214261d36484093e857f015f38')
 
 build() {

@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="http://obextool.sf.net"
 license=('GPL')
 depends=('perl' 'obexftp' 'bwidget' 'tablelist' 'tk')
-source=(http://www.tech-edv.co.at/downloads/$pkgname-$pkgver.tar.gz)
+source=(http://downloads.sourceforge.net/project/${pkgname}/ObexTool/ObexTool-${pkgver}/$pkgname-$pkgver.tar.gz)
 md5sums=('4d225b365613fe88f49b3713d5c35136')
 
 build() {

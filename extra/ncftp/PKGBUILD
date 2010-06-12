@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 license=('custom')
 depends=('ncurses')
 source=(ftp://ftp.ncftp.com/ncftp/$pkgname-$pkgver-src.tar.bz2)
-md5sums=('bfb7c5a29d769cc1054ae9cbbabd9e94')
+md5sums=('bc4af9801f626d541f0bf6b7ac4dae1f')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}

@@ -8,7 +8,7 @@ pkgdesc="Faster replacement for a program called dd"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://freshmeat.net/projects/sdd/"
-source=(http://freshmeat.net/redir/sdd/14849/url_tgz/${pkgname}-${pkgver}.tar.gz)
+source=(ftp://ftp.berlios.de/pub/${pkgname}/${pkgname}-${pkgver}.tar.gz)
 md5sums=('efb6f2d8a39080c8ad085211e01293d6')
 
 build() {

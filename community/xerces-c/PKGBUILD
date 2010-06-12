@@ -10,7 +10,8 @@ arch=('i686' 'x86_64')
 url="http://xerces.apache.org/xerces-c"
 license=("APACHE")
 depends=('gcc-libs')
-source=("http://apache.osuosl.org/xerces/c/3/sources/xerces-c-${pkgver}.tar.gz")
+source=(#"http://apache.osuosl.org/xerces/c/3/sources/xerces-c-${pkgver}.tar.gz"
+	http://archive.apache.org/dist/xerces/c/3/sources/${pkgname}-${pkgver}.tar.gz)
 md5sums=('4dc9460e011ed4857dcd290f22dd6f1b')
 
 build() {

@@ -9,7 +9,7 @@ pkgdesc="Perl/CPAN Module Net::Subnets : Computing subnets in large scale networ
 arch=('any')
 url="http://search.cpan.org/dist/Net-Subnets"
 license=("GPL" "PerlArtistic")
-source=("http://search.cpan.org/CPAN/authors/id/K/KR/KRAIH/Net-Subnets-$pkgver.tar.gz")
+source=("http://mirror.hostfuss.com/CPAN/authors/id/K/KR/KRAIH/Net-Subnets-$pkgver.tar.gz")
 md5sums=('9df0c9e274379d96619f5c79dc810bde')
 
 build() {

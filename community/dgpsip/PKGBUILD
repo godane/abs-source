@@ -9,7 +9,8 @@ arch=('i686' 'x86_64')
 url="http://www.wsrcc.com/wolfgang/gps/dgps-ip.html"
 license=("GPL")
 depends=('glibc')
-source=(http://www.wsrcc.com/wolfgang/ftp/$pkgname-$pkgver.tar.gz)
+source=(#http://www.wsrcc.com/wolfgang/ftp/$pkgname-$pkgver.tar.gz
+	http://www.madbavarian.org/ftp/$pkgname-$pkgver.tar.gz)
 md5sums=('e39129c4d0e1f253dd661bee6049860a')
 
 build() {

@@ -10,7 +10,7 @@ arch=(any)
 license=('GPL')
 url="http://www.meier-geinitz.de/sane/gt68xx-backend/"
 depends=(sane)
-source=(http://w3you.com/dl/firmware/scanner/cism216.fw
+source=(#http://people.freenet.de/go-mcpop/cism216.fw
 	http://subfusion.net/drivers/oslo3071b2.usb
 	http://www.meier-geinitz.de/sane/gt68xx-backend/firmware/A1fw.usb
 	http://www.meier-geinitz.de/sane/gt68xx-backend/firmware/A2Dfw.usb
@@ -26,8 +26,7 @@ source=(http://w3you.com/dl/firmware/scanner/cism216.fw
 	http://www.meier-geinitz.de/sane/gt68xx-backend/firmware/ps1fw.usb
 	http://www.meier-geinitz.de/sane/gt68xx-backend/firmware/ps2fw.usb
 	http://www.meier-geinitz.de/sane/gt68xx-backend/firmware/sbfw.usb)
-md5sums=('24f9eb96d7f1f3697b948f3d8df4b37a'
-         '833d45980f6f18c238c423b707fe4731'
+md5sums=('833d45980f6f18c238c423b707fe4731'
          'f6fee87871d3261beff4b21edbd5bbfc'
          '1eb3d31b48be24183253bd17d2286ba0'
          'a32f4a198745c8ef892e57646785325f'

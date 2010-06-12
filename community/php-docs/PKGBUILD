@@ -13,10 +13,10 @@ license=('PHP')
 depends=('php')
 options=('docs')
 source=(http://www.php.net/distributions/manual/php_manual_en.tar.gz)
-md5sums=('08bf78afce65a687a02901d4c48a6fda')
+md5sums=('2b4af08ba478df7369443e994cbde4c8')
 
 build(){
   cd $startdir
   install -d $pkgdir/usr/share/doc/php/
-  cp -rf src/html $pkgdir/usr/share/doc/php/ || return 1
+  cp -rf php-chunked-xhtml/* $pkgdir/usr/share/doc/php/ || return 1
 }

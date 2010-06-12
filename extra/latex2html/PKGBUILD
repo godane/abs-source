@@ -13,6 +13,7 @@ depends=('perl' 'ghostscript' 'texlive-core' 'libpng' 'giflib' 'netpbm')
 install=$pkgname.install
 license=('GPL2')
 source=(http://saftsack.fs.uni-bayreuth.de/~latex2ht/current/$pkgname-$pkgver.tar.gz)
+md5sums=('275ab6cfa8ca9328446b7f40d8dc302e')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver

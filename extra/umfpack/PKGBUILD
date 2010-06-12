@@ -26,9 +26,9 @@ source=(http://www.cise.ufl.edu/research/sparse/umfpack/UMFPACK-$pkgver.tar.gz
 	http://www.cise.ufl.edu/research/sparse/colamd/COLAMD-${_colamdver}.tar.gz
 	http://www.cise.ufl.edu/research/sparse/ccolamd/CCOLAMD-${_ccolamdver}.tar.gz
 	UFconfig.mk)
-md5sums=('b3490d4f529fbcf4f415e60aa2680a15'
-         '4335ee565feec67e8ba9fc0f6a5e2504'
-         '25548053958c1c5810b17d077b8f37b9'
+md5sums=('19f5d8b4231ec9114718641ce51cce6e'
+         '526413bbbc94f987cf79619d9110bab4'
+         'b3e9679ba20635ac4847f01c01d6e992'
          '9032c5724bee43ccd8f4546338a29fac'
          '2b4e43c8ef33dacfade6d1ec49542ac1'
          '79d813d5b54951060fc264172bfb5ca6'

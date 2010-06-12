@@ -5,7 +5,7 @@
 
 pkgname=blobwars
 pkgver=1.14_1
-_pkgver=1.14-1
+_realver=1.14
 pkgrel=1
 pkgdesc="Platform action game featuring a variety of different weaponry and multiple objectives"
 arch=('i686' 'x86_64')
@@ -13,11 +13,11 @@ url="http://www.parallelrealities.co.uk/projects/blobWars.php"
 license=('GPL')
 depends=('hicolor-icon-theme' 'sdl_image' 'sdl_mixer' 'sdl_ttf')
 install=$pkgname.install
-source=(http://www.parallelrealities.co.uk/download/$pkgname/$pkgname-$_pkgver.tar.gz)
-md5sums=('c4133a08d49d63b518e70d67b88fb8be')
+source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${_realver}-dfsg.tar.gz)
+md5sums=('4f90e31894431de84f2ec941eb99edb6')
 
 build() {
-  cd ${srcdir}/$pkgname-1.14
+  cd ${srcdir}/${pkgname}-${_realver}-dfsg
 
   sed -i -e 's/-g games//' -e 's/-Werror//' makefile || return 1
 

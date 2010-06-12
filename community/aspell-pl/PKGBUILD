@@ -2,7 +2,7 @@
 # Contributor: Arkadiusz Laczynski <alaczynski@gmail.com>
 
 pkgname=aspell-pl 
-pkgver=20100118
+pkgver=20100610
 pkgrel=1 
 pkgdesc="Polish dictionary for aspell"
 license=('GPL' 'LGPL' 'MPL')
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 depends=('aspell') 
 url="http://aspell.sourceforge.net/" 
 source=(http://sjp.pl/slownik/ort/sjp-aspell6-pl-6.0_$pkgver-0.tar.bz2) 
-md5sums=('d1f1a103643f9a2811f57ba43b8bfaaa')
+md5sums=('b566a062e62606572cc0873d07641554')
  
 build() { 
   cd $srcdir/aspell6-pl-6.0_$pkgver-0 

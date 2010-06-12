@@ -11,7 +11,7 @@ license=('CUSTOM')
 depends=('libtiff' 'python' 'lcms')
 url="http://www.littlecms.com"
 options=('!libtool')
-source=(http://littlecms.com/lcms-${pkgver}.tar.gz)
+source=(http://downloads.sourceforge.net/project/lcms/lcms/${pkgver}/lcms-${pkgver}.tar.gz)
 md5sums=('07bdbb4cfb05d21caa58fe3d1c84ddc1')
 
 build() {

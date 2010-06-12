@@ -32,4 +32,4 @@ build() {
 }
 
 md5sums=('f8faabc581747582e37dea2bf14313f6'
-         '5bdd11173ead87fc4a42aff96535e961')
+         '22b89dcfd9e7c98ab238942139b8a970')

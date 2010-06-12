@@ -13,7 +13,7 @@ conflicts=('aumix')
 provides=('aumix')
 install=aumix.install
 url=(http://www.jpj.net/~trevor/aumix.html)
-source=(http://jpj.net/~trevor/aumix/aumix-$pkgver.tar.bz2 \
+source=(http://downloads.sourceforge.net/project/aumix/aumix/${pkgver}/aumix-${pkgver}.tar.bz2 \
 	aumix.desktop)
 md5sums=('b68b0a4914f296aa88153401be9a7858'
          'afba8b39b8dd95d8a9d74356023de14a')

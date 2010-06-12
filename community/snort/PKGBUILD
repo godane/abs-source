@@ -17,10 +17,12 @@ backup=(etc/conf.d/snort
 	etc/snort/{snort,threshold}.conf
 	etc/snort/{confreference,classification}.config)
 install=snort.install
-source=(http://www.snort.org/dl/${pkgname}-${pkgver}.tar.gz
+source=(#http://www.snort.org/dl/${pkgname}-${pkgver}.tar.gz
+	ftp://ftp.tu-chemnitz.de/.SAN0/pub/linux/sunsite.unc-mirror/distributions/sourcemage/grimoire/fallback/fallback/${pkgname}-${pkgver}.tar.gz
         snort
 	snort.conf.d
-	http://www.snort.org/pub-bin/downloads.cgi/Download/comm_rules/Community-Rules-CURRENT.tar.gz
+	#http://www.snort.org/pub-bin/downloads.cgi/Download/comm_rules/Community-Rules-CURRENT.tar.gz
+	http://cvs.fedoraproject.org/repo/pkgs/snort/Community-Rules-CURRENT.tar.gz/52c0c6bc60d7123cb048e562d25bc34a/Community-Rules-CURRENT.tar.gz
 	snort.conf.patch)
 options=('!makeflags' '!libtool')
 
@@ -45,5 +47,5 @@ build() {
 md5sums=('f75547da33446ddb4ca07eefd9ce31dc'
          '361b8b9e40b9af0164f6b3e3da2e8277'
          'b4fb8a68490589cd34df93de7609bfac'
-         'f236b8a4ac12e99d3e7bd81bf3b5a482'
+         '52c0c6bc60d7123cb048e562d25bc34a'
          'd06cfb2024fbb6ad7108e0f0c65d34a7')

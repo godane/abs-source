@@ -14,7 +14,7 @@ backup=('srv/http/punbb/.htaccess')
 source=(http://punbb.informer.com/download/$pkgname-$pkgver.zip \
         http://punbb.informer.com/extensions/pun_antispam/pun_antispam.tgz)
 md5sums=('fcbae02e09e9f09c50b14107cd1bf0a0'
-         '310f7dad018d16c54967df662c83cc25')
+         'd545a56f530e079212b4b0c6fd05e333')
 
 build() {
   cd $srcdir

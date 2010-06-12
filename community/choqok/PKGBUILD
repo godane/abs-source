@@ -13,8 +13,8 @@ arch=('i686' 'x86_64')
 depends=('kdebase-runtime')
 makedepends=('cmake' 'automoc4')
 install=${pkgname}.install
-source=(http://ftp.archlinux.org/other/$pkgname/$pkgname-$pkgver.tar.bz2)
-md5sums=('29d76020c9f47dee703e0feebb0fdef4')
+source=(http://ftp.nedit.org/ftp/FreeBSD/ports/local-distfiles/fluffy/$pkgname-$pkgver.tar.bz2)
+md5sums=('c3515341edbf8f5ae0a95b0fca56d1e5')
 
 build() {
   cd ${srcdir}

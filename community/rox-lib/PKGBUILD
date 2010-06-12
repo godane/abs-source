@@ -11,6 +11,7 @@ license=('LGPL')
 depends=('python>=2.2' 'pygtk>=2.0')
 groups=('rox-desktop')
 source=(http://downloads.sourceforge.net/sourceforge/rox/$pkgname\2-$pkgver.tar.bz2)
+md5sums=('f03f43e416b9008c494ce2e1a25754a3')
 
 build() {
   cd $startdir/src/$pkgname\2-$pkgver/ROX-Lib2

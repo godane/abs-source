@@ -16,7 +16,7 @@ backup=(etc/lire/address.cf \
 	etc/lire/profile_lean \
 	etc/lire/signature)
 options=(zipman docs)
-source=(http://download.logreport.org/pub/lire-$pkgver.tar.gz)
+source=(http://download.logreport.org/pub/archive/lire-$pkgver.tar.gz)
 md5sums=('6a1521acf0e49da3ad2b9ff0fc65d813')
 
 build() {

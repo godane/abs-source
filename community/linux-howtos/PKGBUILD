@@ -2,7 +2,7 @@
 # Contributor: Martin -dadexter- Lefebvre <dadexter@gmail.com>
 
 pkgname=linux-howtos
-pkgver=20090805
+pkgver=20100501
 pkgrel=1
 pkgdesc="Documentation on many tasks relating to Linux setup and operation."
 arch=('any')
@@ -10,7 +10,7 @@ url="http://www.tldp.org"
 license=('unknown')
 options=('docs')
 source=(http://www.slackware.at/data/slackware-current/slackware/f/$pkgname-$pkgver-noarch-1.txz)
-md5sums=('6b1f0663ad923c552c51afa28c55312b')
+md5sums=('48f4703359836938302214dc4851b4b0')
 
 build()
 {

@@ -11,7 +11,7 @@ url="http://fuse.sourceforge.net/wiki/index.php/FuseIso"
 license=('GPL')
 depends=('fuse' 'glib2' 'zlib')
 makedepends=('pkgconfig')
-source=(http://ubiz.ru/dm/${pkgname}-${pkgver}.tar.bz2)
+source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.bz2)
 md5sums=('4bb50412b6d01f337565e28afddca3a5')
 
 build() {

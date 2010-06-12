@@ -14,7 +14,8 @@ depends=('kdemultimedia-kioslave' 'cdparanoia')
 makedepends=('cmake' 'automoc4')
 optdepends=('vorbis-tools' 'faac' 'flac' 'lame')
 install=audex.install
-source=(http://opensource.maniatek.de/$pkgname/files/$pkgname-$pkgver.tar.bz2)
+source=(#http://opensource.maniatek.de/$pkgname/files/$pkgname-$pkgver.tar.bz2
+	http://ftp2.ua.freebsd.org/pub/FreeBSD/distfiles/$pkgname-$pkgver.tar.bz2)
 md5sums=('1953587ebc8e08f5de1eb782ecf92788')
 
 build() {

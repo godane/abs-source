@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="http://initd.org/tracker/pysqlite"
 license=('custom')
 depends=('python' 'sqlite2')
-source=(http://initd.org/pub/software/pysqlite/releases/1.0/$pkgver/pysqlite-$pkgver.tar.gz)
+source=(http://www.cy.kernel.org/pub/dist/goblinx/goblinx-2007.1/source/d/pysqlite/pysqlite-$pkgver.tar.gz)
 md5sums=('4797b5ea7a3d96b87333e6b5af7b9979')
 
 build()

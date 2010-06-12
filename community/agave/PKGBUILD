@@ -15,8 +15,7 @@ makedepends=('intltool' 'boost' 'gnome-doc-utils>=0.11.2')
 install=agave.install
 source=(http://download.gna.org/colorscheme/releases/$pkgname-$pkgver.tar.bz2
         agave-0.4.7-mdv-fix-str-fmt.patch
-	schemebox.patch
-)
+	schemebox.patch)
 md5sums=('93097881f28dcae1eca2800a763f77c3'
          'd96ddfe751d8fd4d13a443b94fafb0b6'
          'c41adfd52ecbf837f4338e67693640fc')

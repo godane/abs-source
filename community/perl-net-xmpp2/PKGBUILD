@@ -5,7 +5,7 @@ pkgdesc="Perl/CPAN Module Net::XMPP2"
 arch=("i686" "x86_64")
 url="http://search.cpan.org/dist/Net-XMPP2/"
 license=("GPL" "PerlArtistic")
-source=("http://search.cpan.org/CPAN/authors/id/E/EL/ELMEX/Net-XMPP2-$pkgver.tar.gz")
+source=("http://mirror.hostfuss.com/CPAN/authors/id/E/EL/ELMEX/Net-XMPP2-$pkgver.tar.gz")
 depends=(perl perl-net-libidn perl-anyevent perl-object-event perl-xml-writer perlxml perl-authen-sasl \
 	 perl-net-libidn perl-net-ssleay perl-net-dns perl-digest-sha1)
 

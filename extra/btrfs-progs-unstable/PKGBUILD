@@ -2,11 +2,12 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 pkgname=btrfs-progs-unstable
 pkgver=0.19.20100607
+_realver=20100607
 pkgrel=2
 pkgdesc="btrfs filesystem utilities"
 arch=(i686 x86_64)
 depends=('glibc' 'e2fsprogs')
-source=(ftp://ftp.archlinux.org/other/$pkgname/$pkgname-$pkgver.tar.bz2
+source=(ftp://ftp.archlinux.org/other/$pkgname/$pkgname-$_realver.tar.bz2
          btrfs-progs-build-fixes.patch)
 url="http://btrfs.wiki.kernel.org/"
 license=('GPL2')

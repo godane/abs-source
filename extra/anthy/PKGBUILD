@@ -11,7 +11,7 @@ url="http://sourceforge.jp/projects/anthy/"
 license=('LGPL' 'GPL')
 depends=('glibc')
 options=('!libtool' 'force')
-source=("http://downloads.sourceforge.jp/anthy/${_filecode}/$pkgname-$pkgver.tar.gz")
+source=("http://iij.dl.sourceforge.jp/${pkgname}/${_filecode}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('1f558ff7ed296787b55bb1c6cf131108')
 
 build() {

@@ -3,7 +3,7 @@
 # Contributor: Mirko Messer <mirk@chao.ch>
 
 pkgname=ipcheck
-pkgver=0.237
+pkgver=0.241
 pkgrel=1
 pkgdesc="A simple python script to register your dynamic IP address using the NIC V2.0 protocol"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ url="http://ipcheck.sourceforge.net/"
 license=('GPL')
 depends=('python')
 source=(http://ipcheck.sourceforge.net/ipcheck.py)
-md5sums=('9c10614f3c97471ecc7bea0ac0d2dcba')
+md5sums=('b73cccf2292ac1263591ead1ae6e09fa')
 
 build()
 {

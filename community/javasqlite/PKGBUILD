@@ -11,6 +11,7 @@ depends=('java-runtime')
 makedepends=('java-environment' 'sqlite3')
 options=(!libtool)
 source=(http://www.ch-werner.de/$pkgname/$pkgname-$pkgver.tar.gz)
+md5sums=('13cfd717bed81409504abf73c0d59260')
 
 build() {
   cd "$startdir/src/$pkgname-$pkgver"
